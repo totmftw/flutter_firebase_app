@@ -46,20 +46,31 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
       var excel = Excel.decodeBytes(bytes);
       for (var table in excel.tables.keys) {
         for (var row in excel.tables[table]!.rows.skip(1)) {
+          String businessName = row[0]?.value is String ? row[0]!.value as String : '';
+          String gstNumber = row[1]?.value is String ? row[1]!.value as String : '';
+          String businessContact = row[2]?.value is String ? row[2]!.value as String : '';
+          String street = row[3]?.value is String ? row[3]!.value as String : '';
+          String city = row[4]?.value is String ? row[4]!.value as String : '';
+          String state = row[5]?.value is String ? row[5]!.value as String : '';
+          String pincode = row[6]?.value is String ? row[6]!.value as String : '';
+          double creditLimit = row[7]?.value is num ? (row[7]!.value as num).toDouble() : 0.0;
+          double dueDays = row[8]?.value is num ? (row[8]!.value as num).toDouble() : 0.0;
+          double overdueAmount = row[9]?.value is num ? (row[9]!.value as num).toDouble() : 0.0;
+
           _firestore.collection('b2b_customers').add({
-            'business_name': row[0]?.value,
-            'gst_number': row[1]?.value,
-            'business_contact': row[2]?.value,
+            'business_name': businessName,
+            'gst_number': gstNumber,
+            'business_contact': businessContact,
             'billing_address': {
-              'street': row[3]?.value,
-              'city': row[4]?.value,
-              'state': row[5]?.value,
-              'pincode': row[6]?.value
+              'street': street,
+              'city': city,
+              'state': state,
+              'pincode': pincode
             },
             'payment_terms': {
-              'credit_limit': row[7]?.value,
-              'due_days': row[8]?.value,
-              'overdue_amount': row[9]?.value
+              'credit_limit': creditLimit,
+              'due_days': dueDays,
+              'overdue_amount': overdueAmount
             },
             'created_at': DateTime.now().toIso8601String()
           });
@@ -72,16 +83,16 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Sheet1'];
     List<CellValue?> row = [
-      CellValue.text('Business Name'),
-      CellValue.text('GST Number'),
-      CellValue.text('Business Contact'),
-      CellValue.text('Street'),
-      CellValue.text('City'),
-      CellValue.text('State'),
-      CellValue.text('Pincode'),
-      CellValue.numeric(0),
-      CellValue.numeric(0),
-      CellValue.numeric(0)
+      TextCellValue('Business Name'),
+      TextCellValue('GST Number'),
+      TextCellValue('Business Contact'),
+      TextCellValue('Street'),
+      TextCellValue('City'),
+      TextCellValue('State'),
+      TextCellValue('Pincode'),
+      IntCellValue(0),
+      IntCellValue(0),
+      IntCellValue(0)
     ];
     sheetObject.appendRow(row);
 

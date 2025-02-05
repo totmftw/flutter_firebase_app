@@ -249,16 +249,15 @@ class _InvoicesTabState extends State<InvoicesTab> {
   }
 
   void _downloadTemplate() {
-    // Logic to download an Excel template
-    String url = ''; // Initialize with a default value
+    String url = ''; // Initialized with a default value
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
     List<CellValue?> row = [
-      CellValue.text('Invoice ID'),
-      CellValue.text('Customer ID'),
-      CellValue.numeric(0), // default value for 'Amount'
-      CellValue.dateTime(DateTime.now()), // default value for 'Date'
-      CellValue.text('Status')
+      TextCellValue('Invoice ID'),
+      TextCellValue('Customer ID'),
+      IntCellValue(0),
+      DateTimeCellValue(DateTime.now()),
+      TextCellValue('Status')
     ];
     sheet.appendRow(row);
     // Save the Excel file
@@ -284,12 +283,18 @@ class _InvoicesTabState extends State<InvoicesTab> {
       // Assuming the first sheet contains the invoice data
       final sheet = excel.tables.keys.first;
       for (var row in excel.tables[sheet]!.rows) {
+        String invCustid = row[0]?.value is String ? row[0]!.value as String : 'N/A';
+        String invId = row[1]?.value is String ? row[1]!.value as String : 'N/A';
+        double amount = row[2]?.value is num ? (row[2]!.value as num).toDouble() : 0.0;
+        DateTime date = row[3]?.value is DateTime ? row[3]!.value as DateTime : DateTime.now();
+        String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
+
         var invoiceData = {
-          'invCustid': (row[0] as CellValue).value, // Customer ID
-          'invId': (row[1] as CellValue).value, // Invoice ID
-          'amount': (row[2] as CellValue).value, // Amount
-          'date': (row[3] as CellValue).value, // Date
-          'status': (row[4] as CellValue).value, // Status
+          'invCustid': invCustid,
+          'invId': invId,
+          'amount': amount,
+          'date': date,
+          'status': status,
         };
 
         // Check for duplicates
@@ -434,16 +439,15 @@ class _PaymentsTabState extends State<PaymentsTab> {
   }
 
   void _downloadPaymentTemplate() {
-    // Logic to download an Excel template for payments
-    String url = ''; // Initialize with a default value
+    String url = ''; // Initialized with a default value
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
     List<CellValue?> row = [
-      CellValue.text('Payment ID'),
-      CellValue.text('Invoice Number'),
-      CellValue.dateTime(DateTime.now()).verticalAlignment(VerticalAlignment.CENTER), // default value for 'Date'
-      CellValue.numeric(0).verticalAlignment(VerticalAlignment.CENTER), // default value for 'Amount'
-      CellValue.text('Status')
+      TextCellValue('Payment ID'),
+      TextCellValue('Invoice Number'),
+      DateTimeCellValue(DateTime.now()),
+      IntCellValue(0),
+      TextCellValue('Status')
     ];
     sheet.appendRow(row);
     // Save the Excel file
@@ -470,12 +474,18 @@ class _PaymentsTabState extends State<PaymentsTab> {
       final sheet = excel.tables.keys.first;
       for (var row in excel.tables[sheet]!.rows) {
         // Extract data from each row and save to Firestore
+        String paymentId = row[0]?.value is String ? row[0]!.value as String : 'N/A';
+        String invoiceNumber = row[1]?.value is String ? row[1]!.value as String : 'N/A';
+        DateTime date = row[2]?.value is DateTime ? row[2]!.value as DateTime : DateTime.now();
+        double amount = row[3]?.value is num ? (row[3]!.value as num).toDouble() : 0.0;
+        String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
+
         var paymentData = {
-          'payment_id': (row[0] as CellValue).value,
-          'invoice_number': (row[1] as CellValue).value,
-          'date': (row[2] as CellValue).value,
-          'amount': (row[3] as CellValue).value,
-          'status': (row[4] as CellValue).value,
+          'payment_id': paymentId,
+          'invoice_number': invoiceNumber,
+          'date': date,
+          'amount': amount,
+          'status': status,
         };
 
         // Check for duplicates
