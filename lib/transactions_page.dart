@@ -28,9 +28,9 @@ class TransactionsPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  InvoicesTab(), // Ensure this is a concrete class
-                  PaymentsTab(), // Ensure this is a concrete class
-                  LedgerTab(), // Ensure this is a concrete class
+                  _InvoicesTabState(), 
+                  _PaymentsTabState(), 
+                  LedgerTab(), 
                 ],
               ),
             ),
