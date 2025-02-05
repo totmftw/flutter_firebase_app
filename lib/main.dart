@@ -3,69 +3,14 @@ library firebase_interop;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'customer_management_page.dart';
-import 'services/database_setup.dart';
-import 'services/firebase_service.dart';
 import 'providers/theme_provider.dart';
 import 'widgets/theme_switch_animation.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Create a MethodChannel instance
-  final MethodChannel channel = MethodChannel(
-    'flutter/lifecycle',
-    const JSONMethodCodec(),
-    ServicesBinding.instance!.defaultBinaryMessenger,
-  );
-
-  // Set the method call handler
-  channel.setMethodCallHandler((MethodCall call) async {
-    print('Received lifecycle message: ${call.method}');
-    if (call.method == 'onResume') {
-      // Handle resume event
-    } else if (call.method == 'onPause') {
-      // Handle pause event
-    }
-    return null; // Return a result if needed
-  });
-
-  // Send a control message to resize the buffer
-  const String controlChannelName = 'dev.flutter/channel-buffers';
-  ByteData message = const JSONMethodCodec().encodeMethodCall(
-    MethodCall('resize', <String, dynamic>{
-      'name': 'flutter/lifecycle',
-      'size': 10, // Set desired buffer size
-    }),
-  );
-  ServicesBinding.instance!.defaultBinaryMessenger.handlePlatformMessage(
-    controlChannelName,
-    message,
-    (ByteData? reply) {},
-  );
-
-  // Send a control message to allow overflow without warnings
-  ByteData message2 = const JSONMethodCodec().encodeMethodCall(
-    MethodCall('allowOverflow', <String, dynamic>{
-      'name': 'flutter/lifecycle',
-      'allowed': true, // Allow overflow without warnings
-    }),
-  );
-  ServicesBinding.instance!.defaultBinaryMessenger.handlePlatformMessage(
-    controlChannelName,
-    message2,
-    (ByteData? reply) {},
-  );
-
-  try {
-    await FirebaseService.initializeFirebase();
-    FirebaseService.configureErrorHandling();
-    await DatabaseInitializer.initializeCollections();
-    runApp(const ProviderScope(child: MyApp()));
-  } catch (e) {
-    print('Failed to initialize app: $e');
-    rethrow;
-  }
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends ConsumerWidget {
@@ -77,9 +22,12 @@ class MyApp extends ConsumerWidget {
 
     return MaterialApp(
       title: 'Business Intelligence App',
-      theme: themeState.theme,
-      home: const MainPage(),
+      theme: themeState.lightTheme,
+      darkTheme: themeState.darkTheme,
+      themeMode: themeState.mode,
+      initialRoute: '/dashboard',
       routes: {
+        '/dashboard': (context) => DashboardPage(),
         '/customers': (context) => CustomerManagementPage(),
       },
     );
@@ -128,7 +76,7 @@ class MainPage extends ConsumerWidget {
                 selectedIndex: 0,
                 onDestinationSelected: (int index) {
                   if (index == 0) {
-                    Navigator.pushNamed(context, '/');
+                    Navigator.pushNamed(context, '/dashboard');
                   } else if (index == 1) {
                     Navigator.pushNamed(context, '/customers');
                   }
@@ -156,6 +104,20 @@ class MainPage extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class DashboardPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dashboard'),
+      ),
+      body: Center(
+        child: Text('Welcome to the Dashboard!'),
       ),
     );
   }
