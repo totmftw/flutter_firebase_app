@@ -274,14 +274,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
       TextCellValue('Invoice ID'),
       TextCellValue('Customer ID'),
       IntCellValue(0),
-      DateTime date = convertExcelSerialToDate(
-        year: 2025,
-        month: 2,
-        day: 5,
-        hour: 11,
-        minute: 38,
-      ) ??
-          DateTime.utc(2023, 10, 5);
+      CellValue(DateTime.now()),
       TextCellValue('Status')
     ];
     sheet.appendRow(row);
@@ -510,14 +503,7 @@ class _PaymentsTabState extends State<PaymentsTab> {
     List<CellValue?> paymentRow = [
       TextCellValue('Payment ID'),
       TextCellValue('Invoice Number'),
-      DateTime date = convertExcelSerialToDate(
-        year: 2025,
-        month: 2,
-        day: 5,
-        hour: 11,
-        minute: 38,
-      ) ??
-          DateTime.utc(2023, 10, 5);
+      CellValue(DateTime.now()),
       IntCellValue(0),
       TextCellValue('Status')
     ];
