@@ -181,57 +181,61 @@ class _InvoicesTabState extends State<InvoicesTab> {
                   'status': statusController.text,
                 };
 
-                // Check for duplicates
-                var existingInvoices = await FirebaseFirestore.instance
-                    .collection('invoiceTable')
-                    .get();
-                bool isDuplicate = existingInvoices.docs
-                    .any((doc) => doc['invId'] == invoiceData['invId']);
-
-                if (isDuplicate) {
-                  // Show error popup
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Error'),
-                        content: Text('Duplicate invoice ID found!'),
-                        actions: <Widget>[
-                          TextButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                } else {
-                  // Add the invoice to Firestore
-                  await FirebaseFirestore.instance
+                try {
+                  // Check for duplicates
+                  var existingInvoices = await FirebaseFirestore.instance
                       .collection('invoiceTable')
-                      .add(invoiceData);
-                  invoices.add(invoiceData);
-                  Navigator.of(context).pop();
-                  // Show success popup
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Success'),
-                        content: Text('Invoice added successfully!'),
-                        actions: <Widget>[
-                          TextButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
+                      .get();
+                  bool isDuplicate = existingInvoices.docs
+                      .any((doc) => doc['invId'] == invoiceData['invId']);
+
+                  if (isDuplicate) {
+                    // Show error popup
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Error'),
+                          content: Text('Duplicate invoice ID found!'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    // Add the invoice to Firestore
+                    await FirebaseFirestore.instance
+                        .collection('invoiceTable')
+                        .add(invoiceData);
+                    invoices.add(invoiceData);
+                    Navigator.of(context).pop();
+                    // Show success popup
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Success'),
+                          content: Text('Invoice added successfully!'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                } catch (e) {
+                  print('Error: $e');
                 }
               },
             ),
@@ -254,7 +258,14 @@ class _InvoicesTabState extends State<InvoicesTab> {
       TextCellValue('Invoice ID'),
       TextCellValue('Customer ID'),
       IntCellValue(0),
-      DateTimeCellValue(DateTime.utc(2023, 10, 5)), // Use utc to handle date correctly
+      DateTime date = convertExcelSerialToDate(
+        year: 2025,
+        month: 2,
+        day: 5,
+        hour: 11,
+        minute: 38,
+      ) ??
+          DateTime.utc(2023, 10, 5);
       TextCellValue('Status')
     ];
     sheet.appendRow(row);
@@ -290,7 +301,8 @@ class _InvoicesTabState extends State<InvoicesTab> {
           day: DateTime.now().day,
           hour: DateTime.now().hour,
           minute: DateTime.now().minute,
-        ) ?? DateTime.utc(2023, 10, 5);
+        ) ??
+            DateTime.utc(2023, 10, 5);
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
         var invoiceData = {
@@ -301,38 +313,42 @@ class _InvoicesTabState extends State<InvoicesTab> {
           'status': status,
         };
 
-        // Check for duplicates
-        var existingInvoices =
-            await FirebaseFirestore.instance.collection('invoiceTable').get();
-        bool isDuplicate = existingInvoices.docs
-            .any((doc) => doc['invId'] == invoiceData['invId']);
+        try {
+          // Check for duplicates
+          var existingInvoices =
+              await FirebaseFirestore.instance.collection('invoiceTable').get();
+          bool isDuplicate = existingInvoices.docs
+              .any((doc) => doc['invId'] == invoiceData['invId']);
 
-        if (isDuplicate) {
-          // Show duplicate notification
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text('Duplicate Found'),
-                content: Text('Duplicate invoice ID: ${invoiceData['invId']}'),
-                actions: <Widget>[
-                  TextButton(
-                    child: Text('OK'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            },
-          );
-        } else {
-          await FirebaseFirestore.instance
-              .collection('invoiceTable')
-              .add(invoiceData);
-          setState(() {
-            invoices.add(invoiceData);
-          });
+          if (isDuplicate) {
+            // Show duplicate notification
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Duplicate Found'),
+                  content: Text('Duplicate invoice ID: ${invoiceData['invId']}'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('OK'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            await FirebaseFirestore.instance
+                .collection('invoiceTable')
+                .add(invoiceData);
+            setState(() {
+              invoices.add(invoiceData);
+            });
+          }
+        } catch (e) {
+          print('Error: $e');
         }
       }
       // Show success message after upload
@@ -458,7 +474,14 @@ class _PaymentsTabState extends State<PaymentsTab> {
     List<CellValue?> paymentRow = [
       TextCellValue('Payment ID'),
       TextCellValue('Invoice Number'),
-      DateTimeCellValue(DateTime.utc(2023, 10, 5)), // Use utc to handle date correctly
+      DateTime date = convertExcelSerialToDate(
+        year: 2025,
+        month: 2,
+        day: 5,
+        hour: 11,
+        minute: 38,
+      ) ??
+          DateTime.utc(2023, 10, 5);
       IntCellValue(0),
       TextCellValue('Status')
     ];
@@ -496,7 +519,8 @@ class _PaymentsTabState extends State<PaymentsTab> {
           day: DateTime.now().day,
           hour: DateTime.now().hour,
           minute: DateTime.now().minute,
-        ) ?? DateTime.utc(2023, 10, 5);
+        ) ??
+            DateTime.utc(2023, 10, 5);
         double amount = row[3]?.value is num ? (row[3]!.value as num).toDouble() : 0.0;
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
@@ -508,37 +532,41 @@ class _PaymentsTabState extends State<PaymentsTab> {
           'status': status,
         };
 
-        // Check for duplicates
-        var existingPayments =
-            await FirebaseFirestore.instance.collection('payments').get();
-        bool isDuplicate = existingPayments.docs
-            .any((doc) => doc['payment_id'] == paymentData['payment_id']);
+        try {
+          // Check for duplicates
+          var existingPayments =
+              await FirebaseFirestore.instance.collection('payments').get();
+          bool isDuplicate = existingPayments.docs
+              .any((doc) => doc['payment_id'] == paymentData['payment_id']);
 
-        if (isDuplicate) {
-          // Show duplicate notification
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text('Duplicate Found'),
-                content:
-                    Text('Duplicate payment ID: ${paymentData['payment_id']}'),
-                actions: <Widget>[
-                  TextButton(
-                    child: Text('OK'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            },
-          );
-        } else {
-          await FirebaseFirestore.instance
-              .collection('payments')
-              .add(paymentData);
-          payments.add(paymentData);
+          if (isDuplicate) {
+            // Show duplicate notification
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Duplicate Found'),
+                  content:
+                      Text('Duplicate payment ID: ${paymentData['payment_id']}'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('OK'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            await FirebaseFirestore.instance
+                .collection('payments')
+                .add(paymentData);
+            payments.add(paymentData);
+          }
+        } catch (e) {
+          print('Error: $e');
         }
       }
       // Show success message after upload

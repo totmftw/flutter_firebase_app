@@ -13,6 +13,9 @@ class CustomerManagementPage extends StatefulWidget {
 
 class _CustomerManagementPageState extends State<CustomerManagementPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  List<String> customers = [];
+  String newCustomerName = '';
+  bool isDarkMode = false;
 
   void _addCustomer() async {
     await _firestore.collection('b2b_customers').add({
@@ -103,49 +106,134 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
       ..writeAsBytesSync(excel.encode()!);
   }
 
+  void addCustomer() {
+    if (newCustomerName.isNotEmpty) {
+      setState(() {
+        customers.add(newCustomerName);
+        newCustomerName = '';
+      });
+    }
+  }
+
+  void deleteCustomer(int index) {
+    setState(() {
+      customers.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Customer Management')),
-      body: StreamBuilder(
-        stream: _firestore.collection('b2b_customers').snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
-          }
-          var customers = snapshot.data!.docs;
-          return ListView.builder(
-            itemCount: customers.length,
-            itemBuilder: (context, index) {
-              var customer = customers[index];
-              return ListTile(
-                title: Text(customer['business_name']),
-                subtitle: Text('GST: ${customer['gst_number']}'),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red),
-                  onPressed: () => _deleteCustomer(customer.id),
-                ),
-              );
-            },
-          );
-        },
+    return MaterialApp(
+      theme: isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Customer Management'),
+          actions: [
+            IconButton(
+              icon: Icon(isDarkMode ? Icons.wb_sunny : Icons.nights_stay),
+              onPressed: () {
+                setState(() {
+                  isDarkMode = !isDarkMode;
+                });
+              },
+            ),
+          ],
+        ),
+        body: Row(
+          children: <Widget>[
+            NavigationDrawer(),
+            Expanded(
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    onChanged: (value) {
+                      newCustomerName = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'New Customer Name',
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: addCustomer,
+                    child: Text('Add Customer'),
+                  ),
+                  Expanded(
+                    child: StreamBuilder(
+                      stream: _firestore.collection('b2b_customers').snapshots(),
+                      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (!snapshot.hasData) {
+                          return Center(child: CircularProgressIndicator());
+                        }
+                        var customers = snapshot.data!.docs;
+                        return ListView.builder(
+                          itemCount: customers.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              title: Text(customers[index]['business_name']),
+                              subtitle: Text('GST: ${customers[index]['gst_number']}'),
+                              trailing: IconButton(
+                                icon: Icon(Icons.delete, color: Colors.red),
+                                onPressed: () => _deleteCustomer(customers[index].id),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: _uploadExcel,
+              child: Icon(Icons.upload_file),
+            ),
+            SizedBox(height: 10),
+            FloatingActionButton(
+              onPressed: _downloadTemplate,
+              child: Icon(Icons.download),
+            ),
+            SizedBox(height: 10),
+            FloatingActionButton(
+              onPressed: _addCustomer,
+              child: Icon(Icons.add),
+            ),
+          ],
+        ),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: _uploadExcel,
-            child: Icon(Icons.upload_file),
+    );
+  }
+}
+
+class NavigationDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Text('Navigation'),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
           ),
-          SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: _downloadTemplate,
-            child: Icon(Icons.download),
+          ListTile(
+            title: Text('Home'),
+            onTap: () {
+              // Navigate to Home
+            },
           ),
-          SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: _addCustomer,
-            child: Icon(Icons.add),
+          ListTile(
+            title: Text('Transactions'),
+            onTap: () {
+              // Navigate to Transactions
+            },
           ),
         ],
       ),
