@@ -1,0 +1,37 @@
+CustomerMaster Table:
+- id: String (Primary Key)
+- name: String
+- email: String
+- phone: String
+- address: String
+
+InvoiceTable:
+- invId: String (Primary Key)
+- invCustid: String (Foreign Key referencing CustomerMaster.id)
+- amount: Double
+- date: Timestamp
+- status: String (e.g., "Paid", "Pending")
+
+PaymentLedger Table:
+- paymentId: String (Primary Key)
+- custId: String (Foreign Key referencing CustomerMaster.id)
+- invId: String (Foreign Key referencing InvoiceTable.invId)
+- amount: Double
+- date: Timestamp
+
+PaymentTransactions Table:
+- transactionId: String (Primary Key)
+- invId: String (Foreign Key referencing InvoiceTable.invId)
+- amount: Double
+- date: Timestamp
+
+FeaturePermissions Table:
+- id: String (Primary Key)
+- parent_id: String (Foreign Key referencing itself)
+- feature_name: String
+
+UserProfiles Table:
+- id: String (Primary Key)
+- name: String
+- email: String
+- reports_to: String (Foreign Key referencing UserProfiles.id)

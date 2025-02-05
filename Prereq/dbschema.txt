@@ -1,0 +1,66 @@
+[
+  {
+    "table_schema": "public",
+    "constraint_name": "customer_ledger_customer_id_fkey",
+    "table_name": "customer_ledger",
+    "column_name": "customer_id",
+    "foreign_table_name": "customerMaster",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "feature_permissions_parent_id_fkey",
+    "table_name": "feature_permissions",
+    "column_name": "parent_id",
+    "foreign_table_name": "feature_permissions",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "fk_invcustid_customer",
+    "table_name": "invoiceTable",
+    "column_name": "invCustid",
+    "foreign_table_name": "customerMaster",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "invoiceTable_invCustid_fkey",
+    "table_name": "invoiceTable",
+    "column_name": "invCustid",
+    "foreign_table_name": "customerMaster",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "paymentLedger_custId_fkey",
+    "table_name": "paymentLedger",
+    "column_name": "custId",
+    "foreign_table_name": "customerMaster",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "paymentLedger_invId_fkey",
+    "table_name": "paymentLedger",
+    "column_name": "invId",
+    "foreign_table_name": "invoiceTable",
+    "foreign_column_name": "invId"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "paymentTransactions_invId_fkey",
+    "table_name": "paymentTransactions",
+    "column_name": "invId",
+    "foreign_table_name": "invoiceTable",
+    "foreign_column_name": "invId"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "user_profiles_reports_to_fkey",
+    "table_name": "user_profiles",
+    "column_name": "reports_to",
+    "foreign_table_name": "user_profiles",
+    "foreign_column_name": "id"
+  }
+]

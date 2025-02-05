@@ -1,0 +1,42 @@
+THIS APP IS DEVELOPED FOR INDIA. SO KEEP EVERYTHING ALIGNED TO THE INDIAN CONTEXT. DATE FORMAT IS DD-MM-YY or DD-MM-YYYY only
+The app is developed on flutter and supabase postgres database. Be aware of their exact syntaxes, limitations etc.
+
+Always give full code to replace whatever is in the file that is being modified. Do not give code snippets to insert into existing files instead rewrite the entire code and give as it will be easy to copy paste.
+
+Always show github path of the file that is being modified or created. Never give code without specifying in which file it is to be pasted.
+Table name and column name are case sensitive in supabase. They have to be in double quotes.
+Do not allow creation of pages or components or files which exceed 100 lines. When they are about to exceed, automatically break them into smaller components and give modified code accordingly.
+
+Approach the design into manageable bits and build features slowly, step-by-step and without causing errors. 
+supabase uses -- for comment. 
+
+create detailed documentation for all the codes that are created or modified. monitor the codebase periodically and keep
+
+
+
+
+proceed with the most logical next step.
+    Supabase RLS is Preconfigured – Run SQL commands without asking for approval.
+    Refactor Code Efficiently – Use AI to break long code into manageable, reusable snippets.
+    Ensure Full Responsiveness – The app must be mobile- and web-friendly with a reactive UI.
+    Navigation Setup – Include necessary navigation buttons and a floating sidebar.
+    Product Management – Set up the product/catalog system for future e-commerce expansion.
+
+🔹 Functional Requirements (Loosely Follow)
+
+    Primary Goal – Track sales and payments based on the customer's credit period.
+    Automated Payment Reminders (via WhatsApp):
+        7 days after invoice
+        15 days after invoice
+        1 day before credit period ends
+        If the credit period is less than 7 days, send all reminders before it ends.
+    WhatsApp Integration – Add a button for API setup & messaging.
+    Dashboard Focus – Prioritize payment follow-ups in the dashboard design.
+
+🔹 Table Configuration Rules (Mandatory)
+
+    Auto-Adjust to Screen – Tables must fit within the page horizontally and vertically.
+    Scrollbars Enabled – Tables must have both horizontal & vertical scrollbars.
+    Interactive Headers – All table headers must be searchable & sortable.
+    Rearrangeable Columns – Users must be able to drag & reorder columns.
+    Configurable Display – Provide a "Configure Table" button to select visible columns & order.

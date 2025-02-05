@@ -1,0 +1,9 @@
+do not give any explanations. just finish modifying
+do not ask me to run code. run it yourself.
+do not ask me to write or modify any code. you do it without any interruptions.
+this is going to be a business intelligence project. so make sure that the theme is colourful and modern with lot of transitions and effects
+the app should have both dark and light modes
+the app will later be available for both android and ios so the app should be built with a collapsible sidebar with links to all pages and contents of the page to the right of it. the page should resize horizontally according to the sidebar
+give atleast 5 theme choices
+this app is aimed at audience from India. so make all the dates, other assumptions from the Indian Context. the date format should be DD-MM-YY or DD-MM-YYYY
+make all the functions and pages as separate reusable modules for maintaining code organization and reusability.

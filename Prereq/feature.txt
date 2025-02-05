@@ -1,0 +1,46 @@
+Project Summary: Invoice and Payment Monitoring App
+Platform: flutter with Supabase backend
+Key Features:
+
+    Transaction Page:
+        Financial Year Dropdown: Allows selection of financial year (April 1 - March 31) for data processing.
+        Tabs:
+            Invoices tab:
+                Add Single Invoice: Opens a popup form with all invoiceTable columns for data entry. Checks for duplicates and displays error popups if necessary.
+                Download Template: Generates an Excel file with all invoiceTable columns.
+                Upload Invoices: Uploads Excel files with invoice data to invoiceTable. Checks for duplicates and displays error popups if necessary.
+                Invoice Table: Displays uploaded invoices with horizontal/vertical scrolling, searchable/sortable headers, and column reordering. IT Admins can configure visible columns.
+            Payments tab:
+                Similar functionality to Invoices tab but for paymentTransactions table.
+            Ledger tab:
+                Displays selected customer's balance sheet for the chosen financial year.
+                Shows debit (invoices) and credit (payments) transactions with relevant details.
+                Includes seller (MKD Enterprises, Bengaluru) and buyer information from customerMaster.
+                Provides a downloadable PDF of the ledger/balance sheet.
+                IT Admins can configure table columns.
+    Dashboard Page:
+        Financial Year Dropdown: Same as in the transaction page.
+        Resizable/Repositionable Components:
+            Clickable Components:
+                Pending Payments: Shows total receivable amount and invoice details in a popup.
+                Outstanding Payments: Shows total overdue amount and invoice details in a popup.
+                Total Sales: Shows total invoice values and all invoices in a popup.
+                Total Orders: Shows invoice count.
+            Invoice Table with Payment Status: Scrollable table with invoice details. Clicking an invoice number displays full details in a popup.
+            Sales vs Payments Chart: Displays a chart comparing sales and payments for the selected financial year.
+        Component Configuration: IT Admins can unlock component resizing/repositioning, apply changes, and persist them in the database.
+
+Technical Requirements:
+
+    Database: Minimal changes, existing tables and relationships.
+    UI/UX: Responsive design, specific color scheme, and component layout.
+    Security: Supabase RLS preconfigured, IT Admin role restrictions.
+    Code Quality: Refactor long code into reusable snippets, organize scattered components.
+
+
+Next Steps:
+
+    Analyze the codebase and database to identify missing implementations.
+    Modify existing code and add new files as needed.
+    Ensure all features work as intended and follow the specified rules.
+    Refactor code for efficiency and organization.
