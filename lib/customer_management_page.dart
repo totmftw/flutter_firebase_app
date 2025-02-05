@@ -19,8 +19,18 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
 
   void _addCustomer() async {
     try {
+      // Check for duplicates
+      var existingCustomers = await _firestore.collection('b2b_customers').get();
+      bool isDuplicate = existingCustomers.docs.any((doc) => doc['business_name'] == newCustomerName);
+
+      if (isDuplicate) {
+        print('Duplicate customer name found!');
+        return;
+      }
+
+      // Add the new customer
       await _firestore.collection('b2b_customers').add({
-        'business_name': 'Sharma Electronics Pvt. Ltd.',
+        'business_name': newCustomerName,
         'gst_number': '27AABCU9603R1Z2',
         'business_contact': '+91 9876543210',
         'billing_address': {
@@ -182,7 +192,7 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: addCustomer,
+                    onPressed: _addCustomer,
                     child: Text('Add Customer'),
                   ),
                   Expanded(

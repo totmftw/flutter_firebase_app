@@ -1,6 +1,7 @@
 library firebase_interop;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'customer_management_page.dart';
 import 'services/database_setup.dart';

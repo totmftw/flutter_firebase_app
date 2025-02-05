@@ -172,7 +172,6 @@ class _InvoicesTabState extends State<InvoicesTab> {
             TextButton(
               child: Text('Submit'),
               onPressed: () async {
-                // Validate and submit the invoice data
                 var invoiceData = {
                   'invId': invoiceNumberController.text,
                   'invCustid': customerIdController.text,
@@ -184,11 +183,8 @@ class _InvoicesTabState extends State<InvoicesTab> {
                 try {
                   try {
                     // Check for duplicates
-                    var existingInvoices = await FirebaseFirestore.instance
-                        .collection('invoiceTable')
-                        .get();
-                    bool isDuplicate = existingInvoices.docs
-                        .any((doc) => doc['invId'] == invoiceData['invId']);
+                    var existingInvoices = await FirebaseFirestore.instance.collection('invoiceTable').get();
+                    bool isDuplicate = existingInvoices.docs.any((doc) => doc['invId'] == invoiceData['invId']);
 
                     if (isDuplicate) {
                       // Show error popup
@@ -212,13 +208,10 @@ class _InvoicesTabState extends State<InvoicesTab> {
                     } else {
                       try {
                         // Add the invoice to Firestore
-                        await FirebaseFirestore.instance
-                            .collection('invoiceTable')
-                            .add(invoiceData);
-                        List<Map<String, dynamic>> mdlListEntries = [];
-                        final data = invoiceData.map((key, value) => MapEntry(key, value)).toList();
-                        mdlListEntries = [...data];
-                        invoices.add(mdlListEntries[0]);
+                        await FirebaseFirestore.instance.collection('invoiceTable').add(invoiceData);
+                        setState(() {
+                          invoices.add(invoiceData);
+                        });
                         Navigator.of(context).pop();
                         // Show success popup
                         showDialog(
