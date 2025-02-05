@@ -128,8 +128,24 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
   }
 
   void deleteCustomer(int index) {
-    setState(() {
-      customers.removeAt(index);
+    if (index >= 0 && index < customers.length) {
+      setState(() {
+        customers.removeAt(index);
+      });
+    } else {
+      print('Index out of bounds: $index');
+    }
+  }
+
+  final Stream<QuerySnapshot> stream = FirebaseFirestore.instance
+    .collection('b2b_customers')
+    .snapshots();
+
+  @override
+  void initState() {
+    super.initState();
+    stream.listen((QuerySnapshot snapshot) {
+      // Process snapshot.docs here
     });
   }
 
@@ -171,7 +187,7 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                   ),
                   Expanded(
                     child: StreamBuilder(
-                      stream: _firestore.collection('b2b_customers').snapshots(),
+                      stream: stream,
                       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                         if (!snapshot.hasData) {
                           return Center(child: CircularProgressIndicator());

@@ -214,7 +214,10 @@ class _InvoicesTabState extends State<InvoicesTab> {
                       await FirebaseFirestore.instance
                           .collection('invoiceTable')
                           .add(invoiceData);
-                      invoices.add(invoiceData);
+                      List<Map<String, dynamic>> mdlListEntries = [];
+                      final data = invoiceData.map((key, value) => MapEntry(key, value)).toList();
+                      mdlListEntries = [...data];
+                      invoices.add(mdlListEntries[0]);
                       Navigator.of(context).pop();
                       // Show success popup
                       showDialog(
