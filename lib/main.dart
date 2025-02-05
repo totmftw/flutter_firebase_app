@@ -33,7 +33,7 @@ class MyApp extends ConsumerWidget {
       theme: themeState.theme,
       home: const MainPage(),
       routes: {
-        '/customers': (context) => const CustomerManagementPage(),
+        '/customers': (context) => CustomerManagementPage(),
       },
     );
   }
@@ -53,7 +53,8 @@ class MainPage extends ConsumerWidget {
           PopupMenuButton<int>(
             icon: const Icon(Icons.palette),
             tooltip: 'Change Theme Color',
-            onSelected: (index) => ref.read(themeProvider.notifier).setThemeIndex(index),
+            onSelected: (index) =>
+                ref.read(themeProvider.notifier).setThemeIndex(index),
             itemBuilder: (context) => [
               const PopupMenuItem(value: 0, child: Text('Blue Theme')),
               const PopupMenuItem(value: 1, child: Text('Purple Theme')),
