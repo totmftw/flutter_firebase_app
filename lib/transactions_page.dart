@@ -286,7 +286,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
         String invCustid = row[0]?.value is String ? row[0]!.value as String : 'N/A';
         String invId = row[1]?.value is String ? row[1]!.value as String : 'N/A';
         double amount = row[2]?.value is num ? (row[2]!.value as num).toDouble() : 0.0;
-        DateTime date = row[3]?.value is DateTime ? row[3]!.value as DateTime : DateTime.now();
+        DateTime date = convertExcelSerialToDate(row[3]?.value is int ? row[3]!.value as int : 0) ?? DateTime.now();
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
         var invoiceData = {
@@ -350,6 +350,11 @@ class _InvoicesTabState extends State<InvoicesTab> {
         },
       );
     }
+  }
+
+  DateTime? convertExcelSerialToDate(int serial) {
+    final startDate = DateTime(1899, 12, 30);
+    return startDate.add(Duration(days: serial));
   }
 }
 
@@ -439,7 +444,7 @@ class _PaymentsTabState extends State<PaymentsTab> {
   }
 
   void _downloadPaymentTemplate() {
-    String url = ''; // Initialized with a default value
+    String url = ''; // Initialize with a default value
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
     List<CellValue?> row = [
@@ -476,7 +481,7 @@ class _PaymentsTabState extends State<PaymentsTab> {
         // Extract data from each row and save to Firestore
         String paymentId = row[0]?.value is String ? row[0]!.value as String : 'N/A';
         String invoiceNumber = row[1]?.value is String ? row[1]!.value as String : 'N/A';
-        DateTime date = row[2]?.value is DateTime ? row[2]!.value as DateTime : DateTime.now();
+        DateTime date = convertExcelSerialToDate(row[2]?.value is int ? row[2]!.value as int : 0) ?? DateTime.now();
         double amount = row[3]?.value is num ? (row[3]!.value as num).toDouble() : 0.0;
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
@@ -540,6 +545,11 @@ class _PaymentsTabState extends State<PaymentsTab> {
         },
       );
     }
+  }
+
+  DateTime? convertExcelSerialToDate(int serial) {
+    final startDate = DateTime(1899, 12, 30);
+    return startDate.add(Duration(days: serial));
   }
 }
 
