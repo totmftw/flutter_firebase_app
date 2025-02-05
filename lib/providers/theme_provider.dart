@@ -3,31 +3,45 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/theme_service.dart';
 
-final themeProvider = StateNotifierProvider<ThemeNotifier, ThemeState>((ref) {
-  return ThemeNotifier();
-});
-
 class ThemeState {
-  final int themeIndex;
-  final bool isDark;
+  final ThemeData lightTheme;
+  final ThemeData darkTheme;
+  final ThemeMode mode;
 
-  ThemeState({this.themeIndex = 0, this.isDark = false});
+  ThemeState({
+    required this.lightTheme,
+    required this.darkTheme,
+    required this.mode,
+  });
 
-  ThemeState copyWith({int? themeIndex, bool? isDark}) {
+  bool get isDark => mode == ThemeMode.dark;
+
+  ThemeState copyWith({
+    ThemeData? lightTheme,
+    ThemeData? darkTheme,
+    ThemeMode? mode,
+  }) {
     return ThemeState(
-      themeIndex: themeIndex ?? this.themeIndex,
-      isDark: isDark ?? this.isDark,
+      lightTheme: lightTheme ?? this.lightTheme,
+      darkTheme: darkTheme ?? this.darkTheme,
+      mode: mode ?? this.mode,
     );
   }
-
-  ThemeData get theme => ThemeService.getTheme(themeIndex, isDark);
 }
 
 class ThemeNotifier extends StateNotifier<ThemeState> {
   static const String _themeIndexKey = 'theme_index';
   static const String _isDarkKey = 'is_dark';
   
-  ThemeNotifier() : super(ThemeState()) {
+  ThemeNotifier() : super(ThemeState(
+    lightTheme: ThemeData.light().copyWith(
+      primaryColor: Colors.blue,
+    ),
+    darkTheme: ThemeData.dark().copyWith(
+      primaryColor: Colors.indigo,
+    ),
+    mode: ThemeMode.system,
+  )) {
     _loadThemePreferences();
   }
 
@@ -35,24 +49,61 @@ class ThemeNotifier extends StateNotifier<ThemeState> {
     final prefs = await SharedPreferences.getInstance();
     final themeIndex = prefs.getInt(_themeIndexKey) ?? 0;
     final isDark = prefs.getBool(_isDarkKey) ?? false;
-    state = ThemeState(themeIndex: themeIndex, isDark: isDark);
+    List<Color> colors = [
+      Colors.blue,
+      Colors.purple,
+      Colors.green,
+      Colors.orange,
+      Colors.indigo,
+    ];
+    state = ThemeState(
+      lightTheme: ThemeData.light().copyWith(
+        primaryColor: colors[themeIndex],
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        primaryColor: colors[themeIndex],
+      ),
+      mode: isDark ? ThemeMode.dark : ThemeMode.light,
+    );
   }
 
   Future<void> _saveThemePreferences() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(_themeIndexKey, state.themeIndex);
-    await prefs.setBool(_isDarkKey, state.isDark);
+    await prefs.setInt(_themeIndexKey, ThemeService.themes.indexOf(state.lightTheme));
+    await prefs.setBool(_isDarkKey, state.mode == ThemeMode.dark);
   }
 
   void toggleDarkMode() {
-    state = state.copyWith(isDark: !state.isDark);
+    state = state.copyWith(
+      mode: state.mode == ThemeMode.system
+          ? ThemeMode.dark
+          : state.mode == ThemeMode.dark
+              ? ThemeMode.light
+              : ThemeMode.system,
+    );
     _saveThemePreferences();
   }
 
   void setThemeIndex(int index) {
-    if (index >= 0 && index < ThemeService.themes.length) {
-      state = state.copyWith(themeIndex: index);
-      _saveThemePreferences();
-    }
+    List<Color> colors = [
+      Colors.blue,
+      Colors.purple,
+      Colors.green,
+      Colors.orange,
+      Colors.indigo,
+    ];
+    state = state.copyWith(
+      lightTheme: ThemeData.light().copyWith(
+        primaryColor: colors[index],
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        primaryColor: colors[index],
+      ),
+    );
+    _saveThemePreferences();
   }
 }
+
+final themeProvider = StateNotifierProvider<ThemeNotifier, ThemeState>((ref) {
+  return ThemeNotifier();
+});
