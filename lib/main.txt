@@ -9,35 +9,6 @@ import 'providers/theme_provider.dart';
 import 'widgets/theme_switch_animation.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  BinaryMessenger binaryMessenger =
-      ServicesBinding.instance!.defaultBinaryMessenger;
-  const String controlChannelName = 'dev.flutter/channel-buffers';
-  ByteData message = const JSONMethodCodec().encodeMethodCall(
-    MethodCall('resize', {
-      'name': 'flutter/lifecycle',
-      'size': 10, // Set desired buffer size
-    }),
-  );
-  ServicesBinding.instance!.defaultBinaryMessenger.handlePlatformMessage(
-    controlChannelName,
-    message,
-    (ByteData? reply) {},
-  );
-  ByteData message2 = const JSONMethodCodec().encodeMethodCall(
-    MethodCall('allowOverflow', {
-      'name': 'flutter/lifecycle',
-      'allowed': true, // Allow overflow without warnings
-    }),
-  );
-  ServicesBinding.instance!.defaultBinaryMessenger.handlePlatformMessage(
-    controlChannelName,
-    message2,
-    (ByteData? reply) {},
-  );
-  binaryMessenger.setListener('flutter/lifecycle', (ByteData? message) {
-    // Handle the message here
-  });
   try {
     await FirebaseService.initializeFirebase();
     FirebaseService.configureErrorHandling();

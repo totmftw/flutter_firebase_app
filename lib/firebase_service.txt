@@ -16,13 +16,12 @@ class FirebaseService {
       if (kIsWeb) {
         await Firebase.initializeApp(
           options: const FirebaseOptions(
-              apiKey: "AIzaSyDBW6HL0ZNY4SjDr8DxcZ_W4Wct1AmG7ng",
-            authDomain: "fbase-f6c37.firebaseapp.com",
-            projectId: "fbase-f6c37",
-            storageBucket: "fbase-f6c37.firebasestorage.app",
-            messagingSenderId: "619173627914",
-            appId: "1:619173627914:web:4937756afac9734013f7f3",
-            measurementId: "G-DFQM4C2LL6"
+              apiKey: 'YOUR_API_KEY',
+              authDomain: 'YOUR_AUTH_DOMAIN',
+              projectId: 'YOUR_PROJECT_ID',
+              storageBucket: 'YOUR_STORAGE_BUCKET',
+              messagingSenderId: 'YOUR_SENDER_ID',
+              appId: 'YOUR_APP_ID'),
         );
       } else {
         await Firebase.initializeApp();

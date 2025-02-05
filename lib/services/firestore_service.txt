@@ -10,9 +10,6 @@ class FirestoreService {
 
   // Get documents from a collection
   Stream<List<DocumentSnapshot>> getDocuments(String collection) {
-    return _firestore
-        .collection(collection)
-        .snapshots()
-        .map((snapshot) => snapshot.docs.where((doc) => doc.exists).toList());
+    return _firestore.collection(collection).snapshots().map((snapshot) => snapshot.docs);
   }
 }
