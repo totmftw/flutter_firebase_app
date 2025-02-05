@@ -418,8 +418,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
     required int hour,
     required int minute,
   }) {
-    final baseDate = DateTime.utc(1899, 12, 30);
-    return baseDate.add(Duration(days: year, hours: hour, minutes: minute));
+    return DateTime(year, month, day, hour, minute);
   }
 }
 
@@ -630,8 +629,7 @@ class PaymentsTabState extends State<PaymentsTab> {
     required int hour,
     required int minute,
   }) {
-    final baseDate = DateTime.utc(1899, 12, 30);
-    return baseDate.add(Duration(days: year, hours: hour, minutes: minute));
+    return DateTime(year, month, day, hour, minute);
   }
 }
 
