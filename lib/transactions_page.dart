@@ -45,10 +45,10 @@ class InvoicesTab extends StatefulWidget {
   const InvoicesTab({super.key});
 
   @override
-  _InvoicesTabState createState() => _InvoicesTabState();
+  InvoicesTab createState() => InvoicesTab();
 }
 
-class _InvoicesTabState extends State<InvoicesTab> {
+class InvoicesTab {
   String selectedYear = '2025'; // Default year
   final List<String> years = ['2023', '2024', '2025', '2026', '2027'];
   List<Map<String, dynamic>> invoices = [];
@@ -61,7 +61,6 @@ class _InvoicesTabState extends State<InvoicesTab> {
     }
   }
 
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -417,10 +416,10 @@ class PaymentsTab extends StatefulWidget {
   const PaymentsTab({super.key});
 
   @override
-  _PaymentsTabState createState() => _PaymentsTabState();
+  PaymentsTab createState() => PaymentsTab();
 }
 
-class _PaymentsTabState extends State<PaymentsTab> {
+class PaymentsTab {
   String selectedYear = '2025'; // Default year
   final List<String> years = ['2023', '2024', '2025', '2026', '2027'];
   List<Map<String, dynamic>> payments = [];
@@ -433,7 +432,6 @@ class _PaymentsTabState extends State<PaymentsTab> {
     }
   }
 
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
