@@ -209,30 +209,34 @@ class _InvoicesTabState extends State<InvoicesTab> {
                       },
                     );
                   } else {
-                    // Add the invoice to Firestore
-                    await FirebaseFirestore.instance
-                        .collection('invoiceTable')
-                        .add(invoiceData);
-                    invoices.add(invoiceData);
-                    Navigator.of(context).pop();
-                    // Show success popup
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Success'),
-                          content: Text('Invoice added successfully!'),
-                          actions: <Widget>[
-                            TextButton(
-                              child: Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
+                    try {
+                      // Add the invoice to Firestore
+                      await FirebaseFirestore.instance
+                          .collection('invoiceTable')
+                          .add(invoiceData);
+                      invoices.add(invoiceData);
+                      Navigator.of(context).pop();
+                      // Show success popup
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Success'),
+                            content: Text('Invoice added successfully!'),
+                            actions: <Widget>[
+                              TextButton(
+                                child: Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    } catch (e) {
+                      print('Error: $e');
+                    }
                   }
                 } catch (e) {
                   print('Error: $e');
@@ -340,12 +344,16 @@ class _InvoicesTabState extends State<InvoicesTab> {
               },
             );
           } else {
-            await FirebaseFirestore.instance
-                .collection('invoiceTable')
-                .add(invoiceData);
-            setState(() {
-              invoices.add(invoiceData);
-            });
+            try {
+              await FirebaseFirestore.instance
+                  .collection('invoiceTable')
+                  .add(invoiceData);
+              setState(() {
+                invoices.add(invoiceData);
+              });
+            } catch (e) {
+              print('Error: $e');
+            }
           }
         } catch (e) {
           print('Error: $e');
@@ -560,10 +568,14 @@ class _PaymentsTabState extends State<PaymentsTab> {
               },
             );
           } else {
-            await FirebaseFirestore.instance
-                .collection('payments')
-                .add(paymentData);
-            payments.add(paymentData);
+            try {
+              await FirebaseFirestore.instance
+                  .collection('payments')
+                  .add(paymentData);
+              payments.add(paymentData);
+            } catch (e) {
+              print('Error: $e');
+            }
           }
         } catch (e) {
           print('Error: $e');

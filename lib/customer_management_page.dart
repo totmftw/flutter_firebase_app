@@ -18,27 +18,35 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
   bool isDarkMode = false;
 
   void _addCustomer() async {
-    await _firestore.collection('b2b_customers').add({
-      'business_name': 'Sharma Electronics Pvt. Ltd.',
-      'gst_number': '27AABCU9603R1Z2',
-      'business_contact': '+91 9876543210',
-      'billing_address': {
-        'street': 'MG Road, Andheri East',
-        'city': 'Mumbai',
-        'state': 'Maharashtra',
-        'pincode': '400001'
-      },
-      'payment_terms': {
-        'credit_limit': 500000,
-        'due_days': 30,
-        'overdue_amount': 75000
-      },
-      'created_at': DateTime.now().toIso8601String()
-    });
+    try {
+      await _firestore.collection('b2b_customers').add({
+        'business_name': 'Sharma Electronics Pvt. Ltd.',
+        'gst_number': '27AABCU9603R1Z2',
+        'business_contact': '+91 9876543210',
+        'billing_address': {
+          'street': 'MG Road, Andheri East',
+          'city': 'Mumbai',
+          'state': 'Maharashtra',
+          'pincode': '400001'
+        },
+        'payment_terms': {
+          'credit_limit': 500000,
+          'due_days': 30,
+          'overdue_amount': 75000
+        },
+        'created_at': DateTime.now().toIso8601String()
+      });
+    } catch (e) {
+      print('Error adding customer: $e');
+    }
   }
 
   void _deleteCustomer(String id) async {
-    await _firestore.collection('b2b_customers').doc(id).delete();
+    try {
+      await _firestore.collection('b2b_customers').doc(id).delete();
+    } catch (e) {
+      print('Error deleting customer: $e');
+    }
   }
 
   Future<void> _uploadExcel() async {
@@ -60,23 +68,27 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
           double dueDays = row[8]?.value is num ? (row[8]!.value as num).toDouble() : 0.0;
           double overdueAmount = row[9]?.value is num ? (row[9]!.value as num).toDouble() : 0.0;
 
-          _firestore.collection('b2b_customers').add({
-            'business_name': businessName,
-            'gst_number': gstNumber,
-            'business_contact': businessContact,
-            'billing_address': {
-              'street': street,
-              'city': city,
-              'state': state,
-              'pincode': pincode
-            },
-            'payment_terms': {
-              'credit_limit': creditLimit,
-              'due_days': dueDays,
-              'overdue_amount': overdueAmount
-            },
-            'created_at': DateTime.now().toIso8601String()
-          });
+          try {
+            _firestore.collection('b2b_customers').add({
+              'business_name': businessName,
+              'gst_number': gstNumber,
+              'business_contact': businessContact,
+              'billing_address': {
+                'street': street,
+                'city': city,
+                'state': state,
+                'pincode': pincode
+              },
+              'payment_terms': {
+                'credit_limit': creditLimit,
+                'due_days': dueDays,
+                'overdue_amount': overdueAmount
+              },
+              'created_at': DateTime.now().toIso8601String()
+            });
+          } catch (e) {
+            print('Error uploading customer: $e');
+          }
         }
       }
     }
@@ -173,7 +185,13 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
                               subtitle: Text('GST: ${customers[index]['gst_number']}'),
                               trailing: IconButton(
                                 icon: Icon(Icons.delete, color: Colors.red),
-                                onPressed: () => _deleteCustomer(customers[index].id),
+                                onPressed: () {
+                                  try {
+                                    _deleteCustomer(customers[index].id);
+                                  } catch (e) {
+                                    print('Error deleting customer: $e');
+                                  }
+                                },
                               ),
                             );
                           },
