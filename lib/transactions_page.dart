@@ -45,10 +45,10 @@ class InvoicesTab extends StatefulWidget {
   const InvoicesTab({super.key});
 
   @override
-  InvoicesTab createState() => InvoicesTab();
+  State<InvoicesTab> createState() => _InvoicesTabState();
 }
 
-class InvoicesTab {
+class _InvoicesTabState extends State<InvoicesTab> {
   String selectedYear = '2025'; // Default year
   final List<String> years = ['2023', '2024', '2025', '2026', '2027'];
   List<Map<String, dynamic>> invoices = [];
@@ -416,11 +416,11 @@ class PaymentsTab extends StatefulWidget {
   const PaymentsTab({super.key});
 
   @override
-  PaymentsTab createState() => PaymentsTab();
+  State<PaymentsTab> createState() => PaymentsTabState();
 }
 
-class PaymentsTab {
-  String selectedYear = '2025'; // Default year
+class PaymentsTabState extends State<PaymentsTab> {
+  String selectedYear = '2025';
   final List<String> years = ['2023', '2024', '2025', '2026', '2027'];
   List<Map<String, dynamic>> payments = [];
 
@@ -432,6 +432,7 @@ class PaymentsTab {
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -492,7 +493,6 @@ class PaymentsTab {
 
   void _addPayment() {
     // Logic to add a single payment
-    // This could open a dialog or navigate to another page
   }
 
   void _downloadPaymentTemplate() {
@@ -506,7 +506,6 @@ class PaymentsTab {
       TextCellValue('Status')
     ];
     sheet.appendRow(paymentRow);
-    // Save the Excel file
     final bytes = excel.save();
     if (kIsWeb) {
       final blob = html.Blob([bytes]);
@@ -517,7 +516,6 @@ class PaymentsTab {
   }
 
   void _uploadPayments() async {
-    // Logic to upload payments from an Excel file
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['xlsx'],
@@ -526,11 +524,8 @@ class PaymentsTab {
     if (result != null) {
       final bytes = result.files.first.bytes;
       final excel = Excel.decodeBytes(bytes!);
-
-      // Assuming the first sheet contains the payment data
       final sheet = excel.tables.keys.first;
       for (var row in excel.tables[sheet]!.rows) {
-        // Extract data from each row and save to Firestore
         String paymentId = row[0]?.value is String ? row[0]!.value as String : 'N/A';
         String invoiceNumber = row[1]?.value is String ? row[1]!.value as String : 'N/A';
         DateTime date = convertExcelSerialToDate(
@@ -553,53 +548,32 @@ class PaymentsTab {
         };
 
         try {
-          try {
-            // Check for duplicates
-            var existingPayments =
-                await FirebaseFirestore.instance.collection('payments').get();
-            bool isDuplicate = existingPayments.docs
-                .any((doc) => doc['payment_id'] == paymentData['payment_id']);
+          var existingPayments = await FirebaseFirestore.instance.collection('payments').get();
+          bool isDuplicate = existingPayments.docs.any((doc) => doc['payment_id'] == paymentData['payment_id']);
 
-            if (isDuplicate) {
-              // Show duplicate notification
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text('Duplicate Found'),
-                    content:
-                        Text('Duplicate payment ID: ${paymentData['payment_id']}'),
-                    actions: <Widget>[
-                      TextButton(
-                        child: Text('OK'),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-            } else {
-              try {
-                await FirebaseFirestore.instance
-                    .collection('payments')
-                    .add(paymentData);
-                payments.add(paymentData);
-              } catch (e) {
-                if (e is FirebaseException) {
-                  print('Firebase error: ${e.message}');
-                } else {
-                  print('Error: $e');
-                }
-              }
-            }
-          } catch (e) {
-            if (e is FirebaseException) {
-              print('Firebase error: ${e.message}');
-            } else {
-              print('Error: $e');
-            }
+          if (isDuplicate) {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Duplicate Found'),
+                  content: Text('Duplicate payment ID: ${paymentData['payment_id']}'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('OK'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            await FirebaseFirestore.instance.collection('payments').add(paymentData);
+            setState(() {
+              payments.add(paymentData);
+            });
           }
         } catch (e) {
           if (e is FirebaseException) {
@@ -609,7 +583,6 @@ class PaymentsTab {
           }
         }
       }
-      // Show success message after upload
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -628,17 +601,6 @@ class PaymentsTab {
         },
       );
     }
-  }
-
-  DateTime? convertExcelSerialToDate({
-    required int year,
-    required int month,
-    required int day,
-    required int hour,
-    required int minute,
-  }) {
-    final baseDate = DateTime.utc(1899, 12, 30);
-    return baseDate.add(Duration(days: year, hours: hour, minutes: minute));
   }
 }
 

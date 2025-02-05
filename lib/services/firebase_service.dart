@@ -16,15 +16,15 @@ class FirebaseService {
       if (kIsWeb) {
         await Firebase.initializeApp(
           options: const FirebaseOptions(
-              apiKey: 'YOUR_API_KEY',
-              authDomain: 'YOUR_AUTH_DOMAIN',
-              projectId: 'YOUR_PROJECT_ID',
-              storageBucket: 'YOUR_STORAGE_BUCKET',
-              messagingSenderId: 'YOUR_SENDER_ID',
-              appId: 'YOUR_APP_ID'),
+            apiKey: 'YOUR_WEB_API_KEY',
+            authDomain: 'YOUR_WEB_AUTH_DOMAIN',
+            projectId: 'YOUR_PROJECT_ID',
+            storageBucket: 'YOUR_STORAGE_BUCKET',
+            messagingSenderId: 'YOUR_SENDER_ID',
+            appId: 'YOUR_WEB_APP_ID',
+            measurementId: 'YOUR_MEASUREMENT_ID', // Optional
+          ),
         );
-      } else {
-        await Firebase.initializeApp();
       }
 
       _initialized = true;
