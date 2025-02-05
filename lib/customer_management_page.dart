@@ -6,16 +6,6 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 
-// Define CellValue class:
-class CustomCellValue {
-  final dynamic value;
-  const CustomCellValue(this.value);
-
-  static CustomCellValue text(String text) => CustomCellValue(text);
-  static CustomCellValue numeric(num number) => CustomCellValue(number);
-  static CustomCellValue dateTime(DateTime dateTime) => CustomCellValue(dateTime);
-}
-
 class CustomerManagementPage extends StatefulWidget {
   @override
   _CustomerManagementPageState createState() => _CustomerManagementPageState();
@@ -82,16 +72,16 @@ class _CustomerManagementPageState extends State<CustomerManagementPage> {
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Sheet1'];
     List<CellValue?> row = [
-      CustomCellValue.text('Business Name'),
-      CustomCellValue.text('GST Number'),
-      CustomCellValue.text('Business Contact'),
-      CustomCellValue.text('Street'),
-      CustomCellValue.text('City'),
-      CustomCellValue.text('State'),
-      CustomCellValue.text('Pincode'),
-      CustomCellValue.numeric(0),
-      CustomCellValue.numeric(0),
-      CustomCellValue.numeric(0)
+      CellValue.text('Business Name'),
+      CellValue.text('GST Number'),
+      CellValue.text('Business Contact'),
+      CellValue.text('Street'),
+      CellValue.text('City'),
+      CellValue.text('State'),
+      CellValue.text('Pincode'),
+      CellValue.numeric(0),
+      CellValue.numeric(0),
+      CellValue.numeric(0)
     ];
     sheetObject.appendRow(row);
 

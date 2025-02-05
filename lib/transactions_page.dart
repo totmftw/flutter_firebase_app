@@ -250,6 +250,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
 
   void _downloadTemplate() {
     // Logic to download an Excel template
+    String url = ''; // Initialize with a default value
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
     List<CellValue?> row = [
@@ -259,7 +260,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
       CellValue.dateTime(DateTime.now()), // default value for 'Date'
       CellValue.text('Status')
     ];
-    sheet!.appendRow(row); // Added null safety operator
+    sheet.appendRow(row);
     // Save the Excel file
     final bytes = excel.save();
     if (kIsWeb) {
@@ -434,16 +435,17 @@ class _PaymentsTabState extends State<PaymentsTab> {
 
   void _downloadPaymentTemplate() {
     // Logic to download an Excel template for payments
+    String url = ''; // Initialize with a default value
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
     List<CellValue?> row = [
       CellValue.text('Payment ID'),
       CellValue.text('Invoice Number'),
-      CellValue.dateTime(DateTime.now()), // default value for 'Date'
-      CellValue.numeric(0), // default value for 'Amount'
+      CellValue.dateTime(DateTime.now()).verticalAlignment(VerticalAlignment.CENTER), // default value for 'Date'
+      CellValue.numeric(0).verticalAlignment(VerticalAlignment.CENTER), // default value for 'Amount'
       CellValue.text('Status')
     ];
-    sheet!.appendRow(row); // Added null safety operator
+    sheet.appendRow(row);
     // Save the Excel file
     final bytes = excel.save();
     if (kIsWeb) {
@@ -540,13 +542,4 @@ class LedgerTab extends StatelessWidget {
       child: Text('Ledger functionality goes here'),
     );
   }
-}
-
-class CustomCellValue {
-  final dynamic value;
-  const CustomCellValue(this.value);
-
-  static CustomCellValue text(String text) => CustomCellValue(text);
-  static CustomCellValue numeric(num number) => CustomCellValue(number);
-  static CustomCellValue dateTime(DateTime dateTime) => CustomCellValue(dateTime);
 }
