@@ -56,7 +56,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
   void downloadFile(String url, String fileName) async {
     if (kIsWeb) {
       final blob = html.Blob([url.codeUnits]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
+      String url = html.Url.createObjectUrlFromBlob(blob); 
       html.window.open(url, '_blank');
       html.Url.revokeObjectUrl(url);
     }
@@ -249,22 +249,22 @@ class _InvoicesTabState extends State<InvoicesTab> {
   }
 
   void _downloadTemplate() {
-    String url = ''; // Initialized with a default value
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
     List<CellValue?> row = [
       TextCellValue('Invoice ID'),
       TextCellValue('Customer ID'),
       IntCellValue(0),
-      DateTimeCellValue(DateTime.now()),
+      DateTimeCellValue(DateTime(year: 2023, month: 10, day: 5)),
       TextCellValue('Status')
     ];
     sheet.appendRow(row);
     // Save the Excel file
     final bytes = excel.save();
     if (kIsWeb) {
+      String url = 'https://example.com'; 
       final blob = html.Blob([bytes]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
+      url = html.Url.createObjectUrlFromBlob(blob);
       html.window.open(url, '_blank');
       html.Url.revokeObjectUrl(url);
     }
@@ -286,7 +286,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
         String invCustid = row[0]?.value is String ? row[0]!.value as String : 'N/A';
         String invId = row[1]?.value is String ? row[1]!.value as String : 'N/A';
         double amount = row[2]?.value is num ? (row[2]!.value as num).toDouble() : 0.0;
-        DateTime date = convertExcelSerialToDate(row[3]?.value is int ? row[3]!.value as int : 0) ?? DateTime.now();
+        DateTime date = convertExcelSerialToDate(row[3]?.value is int ? row[3]!.value as int : 0) ?? DateTime(year: 2023, month: 10, day: 5);
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
         var invoiceData = {
@@ -373,7 +373,7 @@ class _PaymentsTabState extends State<PaymentsTab> {
   void downloadFile(String url, String fileName) async {
     if (kIsWeb) {
       final blob = html.Blob([url.codeUnits]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
+      String url = html.Url.createObjectUrlFromBlob(blob); 
       html.window.open(url, '_blank');
       html.Url.revokeObjectUrl(url);
     }
@@ -444,13 +444,12 @@ class _PaymentsTabState extends State<PaymentsTab> {
   }
 
   void _downloadPaymentTemplate() {
-    String url = ''; // Initialize with a default value
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
     List<CellValue?> row = [
       TextCellValue('Payment ID'),
       TextCellValue('Invoice Number'),
-      DateTimeCellValue(DateTime.now()),
+      DateTimeCellValue(DateTime(year: 2023, month: 10, day: 5)),
       IntCellValue(0),
       TextCellValue('Status')
     ];
@@ -458,8 +457,9 @@ class _PaymentsTabState extends State<PaymentsTab> {
     // Save the Excel file
     final bytes = excel.save();
     if (kIsWeb) {
+      String url = 'https://example.com'; 
       final blob = html.Blob([bytes]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
+      url = html.Url.createObjectUrlFromBlob(blob);
       html.window.open(url, '_blank');
       html.Url.revokeObjectUrl(url);
     }
@@ -481,7 +481,7 @@ class _PaymentsTabState extends State<PaymentsTab> {
         // Extract data from each row and save to Firestore
         String paymentId = row[0]?.value is String ? row[0]!.value as String : 'N/A';
         String invoiceNumber = row[1]?.value is String ? row[1]!.value as String : 'N/A';
-        DateTime date = convertExcelSerialToDate(row[2]?.value is int ? row[2]!.value as int : 0) ?? DateTime.now();
+        DateTime date = convertExcelSerialToDate(row[2]?.value is int ? row[2]!.value as int : 0) ?? DateTime(year: 2023, month: 10, day: 5);
         double amount = row[3]?.value is num ? (row[3]!.value as num).toDouble() : 0.0;
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
