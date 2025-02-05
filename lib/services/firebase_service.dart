@@ -25,6 +25,8 @@ class FirebaseService {
             measurementId: 'YOUR_MEASUREMENT_ID', // Optional
           ),
         );
+      } else {
+        await Firebase.initializeApp(); // Shouldn't be called on web
       }
 
       _initialized = true;

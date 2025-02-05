@@ -13,9 +13,9 @@
 	"severity": 8,
 	"message": "Abstract classes can't be instantiated.\nTry creating an instance of a concrete subtype.",
 	"source": "dart",
-	"startLineNumber": 277,
+	"startLineNumber": 276,
 	"startColumn": 7,
-	"endLineNumber": 277,
+	"endLineNumber": 276,
 	"endColumn": 16
 },{
 	"resource": "/home/dante/CascadeProjects/flutter_firebase_app/lib/transactions_page.dart",
@@ -32,9 +32,9 @@
 	"severity": 8,
 	"message": "Too many positional arguments: 0 expected, but 1 found.\nTry removing the extra arguments.",
 	"source": "dart",
-	"startLineNumber": 277,
+	"startLineNumber": 276,
 	"startColumn": 17,
-	"endLineNumber": 277,
+	"endLineNumber": 276,
 	"endColumn": 31
 },{
 	"resource": "/home/dante/CascadeProjects/flutter_firebase_app/lib/transactions_page.dart",
@@ -51,9 +51,9 @@
 	"severity": 8,
 	"message": "Abstract classes can't be instantiated.\nTry creating an instance of a concrete subtype.",
 	"source": "dart",
-	"startLineNumber": 506,
+	"startLineNumber": 504,
 	"startColumn": 7,
-	"endLineNumber": 506,
+	"endLineNumber": 504,
 	"endColumn": 16
 },{
 	"resource": "/home/dante/CascadeProjects/flutter_firebase_app/lib/transactions_page.dart",
@@ -70,80 +70,27 @@
 	"severity": 8,
 	"message": "Too many positional arguments: 0 expected, but 1 found.\nTry removing the extra arguments.",
 	"source": "dart",
-	"startLineNumber": 506,
+	"startLineNumber": 504,
 	"startColumn": 17,
-	"endLineNumber": 506,
+	"endLineNumber": 504,
 	"endColumn": 31
+},{
+	"resource": "/home/dante/CascadeProjects/flutter_firebase_app/lib/transactions_page.dart",
+	"owner": "_generated_diagnostic_collection_name_#1",
+	"code": {
+		"value": "undefined_method",
+		"target": {
+			"$mid": 1,
+			"path": "/diagnostics/undefined_method",
+			"scheme": "https",
+			"authority": "dart.dev"
+		}
+	},
+	"severity": 8,
+	"message": "The method 'convertExcelSerialToDate' isn't defined for the type 'PaymentsTabState'.\nTry correcting the name to the name of an existing method, or defining a method named 'convertExcelSerialToDate'.",
+	"source": "dart",
+	"startLineNumber": 531,
+	"startColumn": 25,
+	"endLineNumber": 531,
+	"endColumn": 49
 }]
-
-  ============================================================================================
-
-  Fixes to be addressed and a possible solution
-
- Error Analysis & Fixes:
-Analysis of the Issues
-Based on the provided errors, there are two main issues in the transactions_page.dart file:
-Instantiating an Abstract Class:
-Abstract classes cannot be directly instantiated. You must create an instance of a concrete subclass instead.
-Extra Positional Arguments:
-A method or constructor is being called with more positional arguments than it expects.
-Step-by-Step Fixes
-To resolve these issues, follow these steps:
-1. Locate the Offending Code
-Open transactions_page.dart.
-Go to lines 277 and 506 where the errors occur.
-2. Identify the Abstract Class
-At lines 277 and 506, check the class being instantiated.
-For example, if the code looks like:
-dart
-Copy
-var instance = MyClass(); // MyClass is abstract
-Replace MyClass with a concrete subclass of MyClass.
-3. Fix the Instantiation
-Suppose ConcreteClass is a concrete subclass of MyClass. Update the code:
-dart
-Copy
-var instance = ConcreteClass(); // Instantiates a concrete class
-4. Address Extra Arguments
-If the constructor of the concrete class doesn't accept arguments, remove any extra positional arguments.
-For example, if the original code was:
-dart
-Copy
-var instance = ConcreteClass(unexpectedArg); // Error
-Remove unexpectedArg:
-dart
-Copy
-var instance = ConcreteClass(); // Correct if no constructor arguments are needed
-Example Fixes
-Assume the code at lines 277 and 506 looks like this:
-dart
-Copy
-// Line 277
-var obj = MyClass(42); // MyClass is abstract
-
-// Line 506
-var anotherObj = MySecondClass("test"); // MySecondClass is abstract
-Fixes:
-Replace MyClass with a concrete subclass:
-dart
-Copy
-var obj = ConcreteClass(); // Assume ConcreteClass extends MyClass
-Remove extra arguments if the constructor doesn't require any:
-dart
-Copy
-var anotherObj = ConcreteSecondClass(); // Assume ConcreteSecondClass extends MySecondClass
-Verification Steps
-Check Constructor Definitions:
-Ensure that the concrete classes (ConcreteClass, ConcreteSecondClass) have constructors that match the arguments being passed.
-Run the Code:
-Execute the application to confirm that the errors are resolved.
-Final Code Snippet (Example)
-Here’s how the fixed code might look:
-diff
-Copy
-// Before
-var obj = MyClass(42); // Error: Abstract class and extra argument
-
-// After
-var obj = ConcreteClass(); // Fixed: Concrete class, no extra arguments
-By following these steps, you should resolve both the abstract class instantiation and extra argument errors.

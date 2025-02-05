@@ -28,9 +28,9 @@ class TransactionsPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  InvoicesTab(), 
-                  PaymentsTab(), 
-                  LedgerTab(), 
+                  InvoicesTab(),
+                  PaymentsTab(),
+                  LedgerTab(),
                 ],
               ),
             ),
@@ -182,8 +182,11 @@ class _InvoicesTabState extends State<InvoicesTab> {
                 try {
                   try {
                     // Check for duplicates
-                    var existingInvoices = await FirebaseFirestore.instance.collection('invoiceTable').get();
-                    bool isDuplicate = existingInvoices.docs.any((doc) => doc['invId'] == invoiceData['invId']);
+                    var existingInvoices = await FirebaseFirestore.instance
+                        .collection('invoiceTable')
+                        .get();
+                    bool isDuplicate = existingInvoices.docs
+                        .any((doc) => doc['invId'] == invoiceData['invId']);
 
                     if (isDuplicate) {
                       // Show error popup
@@ -207,7 +210,9 @@ class _InvoicesTabState extends State<InvoicesTab> {
                     } else {
                       try {
                         // Add the invoice to Firestore
-                        await FirebaseFirestore.instance.collection('invoiceTable').add(invoiceData);
+                        await FirebaseFirestore.instance
+                            .collection('invoiceTable')
+                            .add(invoiceData);
                         setState(() {
                           invoices.add(invoiceData);
                         });
@@ -273,7 +278,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
       TextCellValue('Invoice ID'),
       TextCellValue('Customer ID'),
       IntCellValue(0),
-      CellValue(DateTime.now()),
+      TextCellValue(DateTime.now().millisecondsSinceEpoch.toString()),
       TextCellValue('Status')
     ];
     sheet.appendRow(row);
@@ -300,18 +305,22 @@ class _InvoicesTabState extends State<InvoicesTab> {
       // Assuming the first sheet contains the invoice data
       final sheet = excel.tables.keys.first;
       for (var row in excel.tables[sheet]!.rows) {
-        String invCustid = row[0]?.value is String ? row[0]!.value as String : 'N/A';
-        String invId = row[1]?.value is String ? row[1]!.value as String : 'N/A';
-        double amount = row[2]?.value is num ? (row[2]!.value as num).toDouble() : 0.0;
+        String invCustid =
+            row[0]?.value is String ? row[0]!.value as String : 'N/A';
+        String invId =
+            row[1]?.value is String ? row[1]!.value as String : 'N/A';
+        double amount =
+            row[2]?.value is num ? (row[2]!.value as num).toDouble() : 0.0;
         DateTime date = convertExcelSerialToDate(
-          year: DateTime.now().year,
-          month: DateTime.now().month,
-          day: DateTime.now().day,
-          hour: DateTime.now().hour,
-          minute: DateTime.now().minute,
-        ) ??
+              year: DateTime.now().year,
+              month: DateTime.now().month,
+              day: DateTime.now().day,
+              hour: DateTime.now().hour,
+              minute: DateTime.now().minute,
+            ) ??
             DateTime.utc(2023, 10, 5);
-        String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
+        String status =
+            row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
         var invoiceData = {
           'invCustid': invCustid,
@@ -324,8 +333,9 @@ class _InvoicesTabState extends State<InvoicesTab> {
         try {
           try {
             // Check for duplicates
-            var existingInvoices =
-                await FirebaseFirestore.instance.collection('invoiceTable').get();
+            var existingInvoices = await FirebaseFirestore.instance
+                .collection('invoiceTable')
+                .get();
             bool isDuplicate = existingInvoices.docs
                 .any((doc) => doc['invId'] == invoiceData['invId']);
 
@@ -336,7 +346,8 @@ class _InvoicesTabState extends State<InvoicesTab> {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: Text('Duplicate Found'),
-                    content: Text('Duplicate invoice ID: ${invoiceData['invId']}'),
+                    content:
+                        Text('Duplicate invoice ID: ${invoiceData['invId']}'),
                     actions: <Widget>[
                       TextButton(
                         child: Text('OK'),
@@ -501,7 +512,7 @@ class PaymentsTabState extends State<PaymentsTab> {
     List<CellValue?> paymentRow = [
       TextCellValue('Payment ID'),
       TextCellValue('Invoice Number'),
-      CellValue(DateTime.now()),
+      TextCellValue(DateTime.now().millisecondsSinceEpoch.toString()),
       IntCellValue(0),
       TextCellValue('Status')
     ];
@@ -526,18 +537,22 @@ class PaymentsTabState extends State<PaymentsTab> {
       final excel = Excel.decodeBytes(bytes!);
       final sheet = excel.tables.keys.first;
       for (var row in excel.tables[sheet]!.rows) {
-        String paymentId = row[0]?.value is String ? row[0]!.value as String : 'N/A';
-        String invoiceNumber = row[1]?.value is String ? row[1]!.value as String : 'N/A';
+        String paymentId =
+            row[0]?.value is String ? row[0]!.value as String : 'N/A';
+        String invoiceNumber =
+            row[1]?.value is String ? row[1]!.value as String : 'N/A';
         DateTime date = convertExcelSerialToDate(
-          year: DateTime.now().year,
-          month: DateTime.now().month,
-          day: DateTime.now().day,
-          hour: DateTime.now().hour,
-          minute: DateTime.now().minute,
-        ) ??
+              year: DateTime.now().year,
+              month: DateTime.now().month,
+              day: DateTime.now().day,
+              hour: DateTime.now().hour,
+              minute: DateTime.now().minute,
+            ) ??
             DateTime.utc(2023, 10, 5);
-        double amount = row[3]?.value is num ? (row[3]!.value as num).toDouble() : 0.0;
-        String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
+        double amount =
+            row[3]?.value is num ? (row[3]!.value as num).toDouble() : 0.0;
+        String status =
+            row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
         var paymentData = {
           'payment_id': paymentId,
@@ -548,8 +563,10 @@ class PaymentsTabState extends State<PaymentsTab> {
         };
 
         try {
-          var existingPayments = await FirebaseFirestore.instance.collection('payments').get();
-          bool isDuplicate = existingPayments.docs.any((doc) => doc['payment_id'] == paymentData['payment_id']);
+          var existingPayments =
+              await FirebaseFirestore.instance.collection('payments').get();
+          bool isDuplicate = existingPayments.docs
+              .any((doc) => doc['payment_id'] == paymentData['payment_id']);
 
           if (isDuplicate) {
             showDialog(
@@ -557,7 +574,8 @@ class PaymentsTabState extends State<PaymentsTab> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   title: Text('Duplicate Found'),
-                  content: Text('Duplicate payment ID: ${paymentData['payment_id']}'),
+                  content: Text(
+                      'Duplicate payment ID: ${paymentData['payment_id']}'),
                   actions: <Widget>[
                     TextButton(
                       child: Text('OK'),
@@ -570,7 +588,9 @@ class PaymentsTabState extends State<PaymentsTab> {
               },
             );
           } else {
-            await FirebaseFirestore.instance.collection('payments').add(paymentData);
+            await FirebaseFirestore.instance
+                .collection('payments')
+                .add(paymentData);
             setState(() {
               payments.add(paymentData);
             });
@@ -601,6 +621,17 @@ class PaymentsTabState extends State<PaymentsTab> {
         },
       );
     }
+  }
+
+  DateTime? convertExcelSerialToDate({
+    required int year,
+    required int month,
+    required int day,
+    required int hour,
+    required int minute,
+  }) {
+    final baseDate = DateTime.utc(1899, 12, 30);
+    return baseDate.add(Duration(days: year, hours: hour, minutes: minute));
   }
 }
 
