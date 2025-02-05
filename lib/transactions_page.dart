@@ -28,8 +28,8 @@ class TransactionsPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  _InvoicesTabState(), 
-                  _PaymentsTabState(), 
+                  InvoicesTab(), 
+                  PaymentsTab(), 
                   LedgerTab(), 
                 ],
               ),
