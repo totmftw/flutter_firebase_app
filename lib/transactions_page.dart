@@ -55,11 +55,9 @@ class _InvoicesTabState extends State<InvoicesTab> {
 
   void downloadFile(String url, String fileName) async {
     if (kIsWeb) {
-      String url = ''; // Initialize first
       final blob = html.Blob([url.codeUnits]);
       url = html.Url.createObjectUrlFromBlob(blob);
       html.window.open(url, '_blank');
-      html.Url.revokeObjectUrl(url);
     }
   }
 
@@ -256,7 +254,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
       TextCellValue('Invoice ID'),
       TextCellValue('Customer ID'),
       IntCellValue(0),
-      DateTimeCellValue(DateTime(2023, 10, 5)),
+      DateTimeCellValue(DateTime.utc(2023, 10, 5)), // Use utc to handle date correctly
       TextCellValue('Status')
     ];
     sheet.appendRow(row);
@@ -264,9 +262,9 @@ class _InvoicesTabState extends State<InvoicesTab> {
     final bytes = excel.save();
     if (kIsWeb) {
       final blob = html.Blob([bytes]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      html.window.open(url, '_blank');
-      html.Url.revokeObjectUrl(url);
+      final urlObject = html.Url.createObjectUrlFromBlob(blob);
+      html.window.open(urlObject, '_blank');
+      html.Url.revokeObjectUrl(urlObject);
     }
   }
 
@@ -286,7 +284,13 @@ class _InvoicesTabState extends State<InvoicesTab> {
         String invCustid = row[0]?.value is String ? row[0]!.value as String : 'N/A';
         String invId = row[1]?.value is String ? row[1]!.value as String : 'N/A';
         double amount = row[2]?.value is num ? (row[2]!.value as num).toDouble() : 0.0;
-        DateTime date = convertExcelSerialToDate(row[3]?.value is int ? row[3]!.value as int : 0) ?? DateTime(2023, 10, 5);
+        DateTime date = convertExcelSerialToDate(
+          year: DateTime.now().year,
+          month: DateTime.now().month,
+          day: DateTime.now().day,
+          hour: DateTime.now().hour,
+          minute: DateTime.now().minute,
+        ) ?? DateTime.utc(2023, 10, 5);
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
         var invoiceData = {
@@ -352,9 +356,15 @@ class _InvoicesTabState extends State<InvoicesTab> {
     }
   }
 
-  DateTime? convertExcelSerialToDate(int serial) {
-    final baseDate = DateTime(1899, 12, 30);
-    return baseDate.add(Duration(days: serial));
+  DateTime? convertExcelSerialToDate({
+    required int year,
+    required int month,
+    required int day,
+    required int hour,
+    required int minute,
+  }) {
+    final baseDate = DateTime.utc(1899, 12, 30);
+    return baseDate.add(Duration(days: year, hours: hour, minutes: minute));
   }
 }
 
@@ -372,11 +382,9 @@ class _PaymentsTabState extends State<PaymentsTab> {
 
   void downloadFile(String url, String fileName) async {
     if (kIsWeb) {
-      String url = ''; // Initialize first
       final blob = html.Blob([url.codeUnits]);
       url = html.Url.createObjectUrlFromBlob(blob);
       html.window.open(url, '_blank');
-      html.Url.revokeObjectUrl(url);
     }
   }
 
@@ -447,21 +455,21 @@ class _PaymentsTabState extends State<PaymentsTab> {
   void _downloadPaymentTemplate() {
     final excel = Excel.createExcel();
     Sheet sheet = excel['Sheet1'];
-    List<CellValue?> row = [
+    List<CellValue?> paymentRow = [
       TextCellValue('Payment ID'),
       TextCellValue('Invoice Number'),
-      DateTimeCellValue(DateTime(2023, 10, 5)),
+      DateTimeCellValue(DateTime.utc(2023, 10, 5)), // Use utc to handle date correctly
       IntCellValue(0),
       TextCellValue('Status')
     ];
-    sheet.appendRow(row);
+    sheet.appendRow(paymentRow);
     // Save the Excel file
     final bytes = excel.save();
     if (kIsWeb) {
       final blob = html.Blob([bytes]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      html.window.open(url, '_blank');
-      html.Url.revokeObjectUrl(url);
+      final urlObject = html.Url.createObjectUrlFromBlob(blob);
+      html.window.open(urlObject, '_blank');
+      html.Url.revokeObjectUrl(urlObject);
     }
   }
 
@@ -475,13 +483,20 @@ class _PaymentsTabState extends State<PaymentsTab> {
     if (result != null) {
       final bytes = result.files.first.bytes;
       final excel = Excel.decodeBytes(bytes!);
+
       // Assuming the first sheet contains the payment data
       final sheet = excel.tables.keys.first;
       for (var row in excel.tables[sheet]!.rows) {
         // Extract data from each row and save to Firestore
         String paymentId = row[0]?.value is String ? row[0]!.value as String : 'N/A';
         String invoiceNumber = row[1]?.value is String ? row[1]!.value as String : 'N/A';
-        DateTime date = convertExcelSerialToDate(row[2]?.value is int ? row[2]!.value as int : 0) ?? DateTime(2023, 10, 5);
+        DateTime date = convertExcelSerialToDate(
+          year: DateTime.now().year,
+          month: DateTime.now().month,
+          day: DateTime.now().day,
+          hour: DateTime.now().hour,
+          minute: DateTime.now().minute,
+        ) ?? DateTime.utc(2023, 10, 5);
         double amount = row[3]?.value is num ? (row[3]!.value as num).toDouble() : 0.0;
         String status = row[4]?.value is String ? row[4]!.value as String : 'N/A';
 
@@ -547,9 +562,15 @@ class _PaymentsTabState extends State<PaymentsTab> {
     }
   }
 
-  DateTime? convertExcelSerialToDate(int serial) {
-    final baseDate = DateTime(1899, 12, 30);
-    return baseDate.add(Duration(days: serial));
+  DateTime? convertExcelSerialToDate({
+    required int year,
+    required int month,
+    required int day,
+    required int hour,
+    required int minute,
+  }) {
+    final baseDate = DateTime.utc(1899, 12, 30);
+    return baseDate.add(Duration(days: year, hours: hour, minutes: minute));
   }
 }
 
