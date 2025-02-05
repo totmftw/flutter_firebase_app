@@ -8,8 +8,6 @@ class ThemeService {
       colorScheme: ColorScheme.light(
         primary: Colors.blue[700]!,
         secondary: Colors.teal,
-        surface: Colors.white,
-        background: Colors.grey[50]!,
       ),
       cardTheme: CardTheme(
         elevation: 2,
@@ -23,8 +21,6 @@ class ThemeService {
       colorScheme: ColorScheme.light(
         primary: Colors.purple[700]!,
         secondary: Colors.amber,
-        surface: Colors.white,
-        background: Colors.grey[50]!,
       ),
       cardTheme: CardTheme(
         elevation: 2,
@@ -38,8 +34,6 @@ class ThemeService {
       colorScheme: ColorScheme.light(
         primary: Colors.green[700]!,
         secondary: Colors.orange,
-        surface: Colors.white,
-        background: Colors.grey[50]!,
       ),
       cardTheme: CardTheme(
         elevation: 2,
@@ -53,8 +47,6 @@ class ThemeService {
       colorScheme: ColorScheme.light(
         primary: Colors.deepOrange[700]!,
         secondary: Colors.lightBlue,
-        surface: Colors.white,
-        background: Colors.grey[50]!,
       ),
       cardTheme: CardTheme(
         elevation: 2,
@@ -68,8 +60,6 @@ class ThemeService {
       colorScheme: ColorScheme.light(
         primary: Colors.indigo[700]!,
         secondary: Colors.pink,
-        surface: Colors.white,
-        background: Colors.grey[50]!,
       ),
       cardTheme: CardTheme(
         elevation: 2,
@@ -85,7 +75,6 @@ class ThemeService {
       colorScheme: theme.colorScheme.copyWith(
         brightness: Brightness.dark,
         surface: Colors.grey[900]!,
-        background: Colors.black,
       ),
       cardTheme: theme.cardTheme,
     );

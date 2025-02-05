@@ -28,9 +28,9 @@ class TransactionsPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  InvoicesTab(),
-                  PaymentsTab(),
-                  LedgerTab(),
+                  InvoicesTab(), // Ensure this is a concrete class
+                  PaymentsTab(), // Ensure this is a concrete class
+                  LedgerTab(), // Ensure this is a concrete class
                 ],
               ),
             ),
@@ -53,7 +53,7 @@ class _InvoicesTabState extends State<InvoicesTab> {
   final List<String> years = ['2023', '2024', '2025', '2026', '2027'];
   List<Map<String, dynamic>> invoices = [];
 
-  void downloadFile(String url, String fileName) async {
+  void downloadFile(String url) async {
     if (kIsWeb) {
       final blob = html.Blob([url.codeUnits]);
       url = html.Url.createObjectUrlFromBlob(blob);
@@ -425,7 +425,7 @@ class _PaymentsTabState extends State<PaymentsTab> {
   final List<String> years = ['2023', '2024', '2025', '2026', '2027'];
   List<Map<String, dynamic>> payments = [];
 
-  void downloadFile(String url, String fileName) async {
+  void downloadFile(String url) async {
     if (kIsWeb) {
       final blob = html.Blob([url.codeUnits]);
       url = html.Url.createObjectUrlFromBlob(blob);

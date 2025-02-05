@@ -29,7 +29,7 @@ class FirebaseService {
 
       _initialized = true;
       _logger.i('Firebase initialized successfully');
-    } catch (e, stackTrace) {
+    } catch (e) {
       _logger.e('Error initializing Firebase: $e');
       rethrow;
     }
@@ -39,7 +39,7 @@ class FirebaseService {
       Future<void> Function() operation) async {
     try {
       await operation();
-    } catch (e, stackTrace) {
+    } catch (e) {
       _logger.e('Operation failed: $e');
       rethrow;
     }
