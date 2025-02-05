@@ -1,6 +1,7 @@
 library firebase_interop;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'customer_management_page.dart';
 import 'services/database_setup.dart';
@@ -10,11 +11,29 @@ import 'widgets/theme_switch_animation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  BinaryMessenger binaryMessenger =
-      ServicesBinding.instance!.defaultBinaryMessenger;
+
+  // Create a MethodChannel instance
+  final MethodChannel channel = MethodChannel(
+    'flutter/lifecycle',
+    const JSONMethodCodec(),
+    ServicesBinding.instance!.defaultBinaryMessenger,
+  );
+
+  // Set the method call handler
+  channel.setMethodCallHandler((MethodCall call) async {
+    print('Received lifecycle message: ${call.method}');
+    if (call.method == 'onResume') {
+      // Handle resume event
+    } else if (call.method == 'onPause') {
+      // Handle pause event
+    }
+    return null; // Return a result if needed
+  });
+
+  // Send a control message to resize the buffer
   const String controlChannelName = 'dev.flutter/channel-buffers';
   ByteData message = const JSONMethodCodec().encodeMethodCall(
-    MethodCall('resize', {
+    MethodCall('resize', <String, dynamic>{
       'name': 'flutter/lifecycle',
       'size': 10, // Set desired buffer size
     }),
@@ -24,8 +43,10 @@ void main() async {
     message,
     (ByteData? reply) {},
   );
+
+  // Send a control message to allow overflow without warnings
   ByteData message2 = const JSONMethodCodec().encodeMethodCall(
-    MethodCall('allowOverflow', {
+    MethodCall('allowOverflow', <String, dynamic>{
       'name': 'flutter/lifecycle',
       'allowed': true, // Allow overflow without warnings
     }),
@@ -35,9 +56,7 @@ void main() async {
     message2,
     (ByteData? reply) {},
   );
-  binaryMessenger.setListener('flutter/lifecycle', (ByteData? message) {
-    // Handle the message here
-  });
+
   try {
     await FirebaseService.initializeFirebase();
     FirebaseService.configureErrorHandling();
