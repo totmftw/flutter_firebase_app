@@ -94,6 +94,603 @@ check @ require.js:938
 each @ require.js:59
 emit @ require.js:1188
 check @ require.js:938
+enable @ require.js:1176
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+(anonymous) @ require.js:1460
+setTimeout
+req.nextTick @ require.js:1815
+localRequire @ require.js:1449
+configure @ require.js:1387
+requirejs @ require.js:1794
+(anonymous) @ require.js:2144
+(anonymous) @ require.js:2145
+profile.dart:110 
+        
+        
+       GET http://localhost:41409/assets/FontManifest.json net::ERR_ABORTED 404 (Not Found)
+rawHttpGet @ profile.dart:110
+(anonymous) @ dom.dart:1600
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+httpFetch @ dom.dart:1591
+loadAsset @ asset_manager.dart:83
+(anonymous) @ fonts.dart:29
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+fetchFontManifest @ fonts.dart:28
+(anonymous) @ initialization.dart:263
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+_downloadAssetFonts @ initialization.dart:250
+(anonymous) @ initialization.dart:197
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+initializeEngineServices @ initialization.dart:110
+(anonymous) @ initialization.dart:34
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+(anonymous) @ initialization.dart:34
+(anonymous) @ app_bootstrap.dart:48
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+(anonymous) @ app_bootstrap.dart:49
+(anonymous) @ js_loader.dart:56
+_callDartFunctionFast1 @ js_allow_interop_patch.dart:212
+ret @ js_allow_interop_patch.dart:81
+n @ flutter_bootstrap.js:1
+didCreateEngineInitializer @ flutter_bootstrap.js:1
+(anonymous) @ initialization.dart:52
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+bootstrapEngine @ initialization.dart:27
+(anonymous) @ web_entrypoint.dart:19
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+main$ @ web_entrypoint.dart:18
+(anonymous) @ main_module.bootstrap.js:18
+execCb @ require.js:1696
+check @ require.js:883
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+enable @ require.js:1176
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+callGetModule @ require.js:1203
+completeLoad @ require.js:1590
+onScriptLoad @ require.js:1717
+load
+req.load @ require.js:1942
+load @ require.js:1685
+load @ require.js:834
+fetch @ require.js:824
+check @ require.js:856
+enable @ require.js:1176
+enable @ require.js:1557
+(anonymous) @ require.js:1161
+(anonymous) @ require.js:134
+each @ require.js:59
+enable @ require.js:1113
+init @ require.js:788
+(anonymous) @ require.js:1460
+setTimeout
+req.nextTick @ require.js:1815
+localRequire @ require.js:1449
+configure @ require.js:1387
+requirejs @ require.js:1794
+(anonymous) @ require.js:2144
+(anonymous) @ require.js:2145
+dom.dart:184 Font manifest does not exist at `assets/FontManifest.json` - ignoring.
+DomConsoleExtension$124warn @ dom.dart:184
+(anonymous) @ dom.dart:184
+(anonymous) @ fonts.dart:31
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+(anonymous) @ async_patch.dart:581
+runUnary @ zone.dart:1676
+handleValue @ future_impl.dart:204
+handleValueCallback @ future_impl.dart:902
+_propagateToListeners @ future_impl.dart:931
+[_completeWithValue] @ future_impl.dart:707
+complete @ async_patch.dart:496
+_asyncReturn @ async_patch.dart:558
+(anonymous) @ dom.dart:1605
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+(anonymous) @ async_patch.dart:581
+runUnary @ zone.dart:1676
+handleValue @ future_impl.dart:204
+handleValueCallback @ future_impl.dart:902
+_propagateToListeners @ future_impl.dart:931
+[_completeWithValue] @ future_impl.dart:707
+(anonymous) @ future_impl.dart:777
+_microtaskLoop @ schedule_microtask.dart:40
+_startMicrotaskLoop @ schedule_microtask.dart:49
+(anonymous) @ async_patch.dart:186
+Promise.then
+_scheduleImmediateWithPromise @ profile.dart:110
+_scheduleImmediate @ async_patch.dart:160
+_scheduleAsyncCallback @ schedule_microtask.dart:69
+_rootScheduleMicrotask @ zone.dart:1481
+scheduleMicrotask @ zone.dart:1696
+[_asyncCompleteWithValue] @ future_impl.dart:776
+[_asyncComplete] @ future_impl.dart:736
+complete @ future_impl.dart:85
+(anonymous) @ js_util_patch.dart:483
+Promise.then
+promiseToFuture @ js_util_patch.dart:495
+rawHttpGet @ dom.dart:1571
+(anonymous) @ dom.dart:1600
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+httpFetch @ dom.dart:1591
+loadAsset @ asset_manager.dart:83
+(anonymous) @ fonts.dart:29
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+fetchFontManifest @ fonts.dart:28
+(anonymous) @ initialization.dart:263
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+_downloadAssetFonts @ initialization.dart:250
+(anonymous) @ initialization.dart:197
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+initializeEngineServices @ initialization.dart:110
+(anonymous) @ initialization.dart:34
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+(anonymous) @ initialization.dart:34
+(anonymous) @ app_bootstrap.dart:48
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+(anonymous) @ app_bootstrap.dart:49
+(anonymous) @ js_loader.dart:56
+_callDartFunctionFast1 @ js_allow_interop_patch.dart:212
+ret @ js_allow_interop_patch.dart:81
+n @ flutter_bootstrap.js:1
+didCreateEngineInitializer @ flutter_bootstrap.js:1
+(anonymous) @ initialization.dart:52
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+bootstrapEngine @ initialization.dart:27
+(anonymous) @ web_entrypoint.dart:19
+(anonymous) @ async_patch.dart:610
+(anonymous) @ async_patch.dart:634
+_asyncStartSync @ async_patch.dart:532
+main$ @ web_entrypoint.dart:18
+(anonymous) @ main_module.bootstrap.js:18
+execCb @ require.js:1696
+check @ require.js:883
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
+(anonymous) @ require.js:1139
+(anonymous) @ require.js:134
+(anonymous) @ require.js:1189
+each @ require.js:59
+emit @ require.js:1188
+check @ require.js:938
 (anonymous) @ require.js:1139
 (anonymous) @ require.js:134
 (anonymous) @ require.js:1189
@@ -279,20 +876,20 @@ js_primitives.dart:28 Error initializing UserProfiles: TypeError: Instance of 'F
 js_primitives.dart:28 ══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═══════════════════════════════════════════════════════════
 js_primitives.dart:28 The following _TypeError was thrown building Builder:
 js_primitives.dart:28 TypeError: Instance of 'FirebaseException': type 'FirebaseException' is not a subtype of type
- 'JavaScriptObject'
- 
- The relevant error-causing widget was:
-   MaterialApp MaterialApp:file:///home/dante/CascadeProjects/flutter_firebase_app/lib/main.dart:16:12
- 
- When the exception was thrown, this was the stack:
- dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 288:3  throw_
- dart-sdk/lib/_internal/js_dev_runtime/private/profile.dart 110:39            _failedAsCheck
+js_primitives.dart:28 'JavaScriptObject'
+js_primitives.dart:28 
+js_primitives.dart:28 The relevant error-causing widget was:
+js_primitives.dart:28   MaterialApp MaterialApp:file:///home/dante/CascadeProjects/flutter_firebase_app/lib/main.dart:16:12
+js_primitives.dart:28 
+js_primitives.dart:28 When the exception was thrown, this was the stack:
+js_primitives.dart:28 dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 288:3  throw_
+js_primitives.dart:28 dart-sdk/lib/_internal/js_dev_runtime/private/profile.dart 110:39            _failedAsCheck
 js_primitives.dart:28 dart-sdk/lib/_internal/js_shared/lib/rti.dart 1383:3                         _generalAsCheckImplementation
 js_primitives.dart:28 packages/firebase_core_web/firebase_core_web.dart.js 380:142                 app
 js_primitives.dart:28 packages/firebase_core/firebase_core.dart.js 108:50                          app
 js_primitives.dart:28 packages/cloud_firestore/cloud_firestore.dart.js 1835:89                     get instance
-js_primitives.dart:28 packages/flutter_firebase_app/customer_management_page.dart.js 650:58        new
-js_primitives.dart:28 packages/flutter_firebase_app/customer_management_page.dart.js 408:14        createState
+js_primitives.dart:28 packages/flutter_firebase_app/customer_management_page.dart.js 660:58        new
+js_primitives.dart:28 packages/flutter_firebase_app/customer_management_page.dart.js 409:14        createState
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226418:34                 new
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 46397:14                  createElement
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54257:34                  inflateWidget
@@ -566,42 +1163,42 @@ js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
@@ -708,40 +1305,40 @@ js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:1
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
@@ -847,41 +1444,41 @@ js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 58441:32                  mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
@@ -987,25 +1584,25 @@ js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
- packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
- packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
- packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
- packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
- packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
- packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226349:13                 performRebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54669:14                  rebuild
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165909:12                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 226342:29                 [_firstBuild]
+js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165905:28                 mount
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 54262:18                  inflateWidget
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 53963:25                  updateChild
 js_primitives.dart:28 packages/flutter/src/widgets/unique_widget.dart.js 165940:34                 performRebuild

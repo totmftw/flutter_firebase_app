@@ -182,50 +182,22 @@ class _InvoicesTabState extends State<InvoicesTab> {
                 };
 
                 try {
-                  // Check for duplicates
-                  var existingInvoices = await FirebaseFirestore.instance
-                      .collection('invoiceTable')
-                      .get();
-                  bool isDuplicate = existingInvoices.docs
-                      .any((doc) => doc['invId'] == invoiceData['invId']);
+                  try {
+                    // Check for duplicates
+                    var existingInvoices = await FirebaseFirestore.instance
+                        .collection('invoiceTable')
+                        .get();
+                    bool isDuplicate = existingInvoices.docs
+                        .any((doc) => doc['invId'] == invoiceData['invId']);
 
-                  if (isDuplicate) {
-                    // Show error popup
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Error'),
-                          content: Text('Duplicate invoice ID found!'),
-                          actions: <Widget>[
-                            TextButton(
-                              child: Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  } else {
-                    try {
-                      // Add the invoice to Firestore
-                      await FirebaseFirestore.instance
-                          .collection('invoiceTable')
-                          .add(invoiceData);
-                      List<Map<String, dynamic>> mdlListEntries = [];
-                      final data = invoiceData.map((key, value) => MapEntry(key, value)).toList();
-                      mdlListEntries = [...data];
-                      invoices.add(mdlListEntries[0]);
-                      Navigator.of(context).pop();
-                      // Show success popup
+                    if (isDuplicate) {
+                      // Show error popup
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Success'),
-                            content: Text('Invoice added successfully!'),
+                            title: Text('Error'),
+                            content: Text('Duplicate invoice ID found!'),
                             actions: <Widget>[
                               TextButton(
                                 child: Text('OK'),
@@ -237,12 +209,56 @@ class _InvoicesTabState extends State<InvoicesTab> {
                           );
                         },
                       );
-                    } catch (e) {
+                    } else {
+                      try {
+                        // Add the invoice to Firestore
+                        await FirebaseFirestore.instance
+                            .collection('invoiceTable')
+                            .add(invoiceData);
+                        List<Map<String, dynamic>> mdlListEntries = [];
+                        final data = invoiceData.map((key, value) => MapEntry(key, value)).toList();
+                        mdlListEntries = [...data];
+                        invoices.add(mdlListEntries[0]);
+                        Navigator.of(context).pop();
+                        // Show success popup
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Success'),
+                              content: Text('Invoice added successfully!'),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } catch (e) {
+                        if (e is FirebaseException) {
+                          print('Firebase error: ${e.message}');
+                        } else {
+                          print('Error: $e');
+                        }
+                      }
+                    }
+                  } catch (e) {
+                    if (e is FirebaseException) {
+                      print('Firebase error: ${e.message}');
+                    } else {
                       print('Error: $e');
                     }
                   }
                 } catch (e) {
-                  print('Error: $e');
+                  if (e is FirebaseException) {
+                    print('Firebase error: ${e.message}');
+                  } else {
+                    print('Error: $e');
+                  }
                 }
               },
             ),
@@ -321,45 +337,61 @@ class _InvoicesTabState extends State<InvoicesTab> {
         };
 
         try {
-          // Check for duplicates
-          var existingInvoices =
-              await FirebaseFirestore.instance.collection('invoiceTable').get();
-          bool isDuplicate = existingInvoices.docs
-              .any((doc) => doc['invId'] == invoiceData['invId']);
+          try {
+            // Check for duplicates
+            var existingInvoices =
+                await FirebaseFirestore.instance.collection('invoiceTable').get();
+            bool isDuplicate = existingInvoices.docs
+                .any((doc) => doc['invId'] == invoiceData['invId']);
 
-          if (isDuplicate) {
-            // Show duplicate notification
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text('Duplicate Found'),
-                  content: Text('Duplicate invoice ID: ${invoiceData['invId']}'),
-                  actions: <Widget>[
-                    TextButton(
-                      child: Text('OK'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
-          } else {
-            try {
-              await FirebaseFirestore.instance
-                  .collection('invoiceTable')
-                  .add(invoiceData);
-              setState(() {
-                invoices.add(invoiceData);
-              });
-            } catch (e) {
+            if (isDuplicate) {
+              // Show duplicate notification
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Duplicate Found'),
+                    content: Text('Duplicate invoice ID: ${invoiceData['invId']}'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('OK'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            } else {
+              try {
+                await FirebaseFirestore.instance
+                    .collection('invoiceTable')
+                    .add(invoiceData);
+                setState(() {
+                  invoices.add(invoiceData);
+                });
+              } catch (e) {
+                if (e is FirebaseException) {
+                  print('Firebase error: ${e.message}');
+                } else {
+                  print('Error: $e');
+                }
+              }
+            }
+          } catch (e) {
+            if (e is FirebaseException) {
+              print('Firebase error: ${e.message}');
+            } else {
               print('Error: $e');
             }
           }
         } catch (e) {
-          print('Error: $e');
+          if (e is FirebaseException) {
+            print('Firebase error: ${e.message}');
+          } else {
+            print('Error: $e');
+          }
         }
       }
       // Show success message after upload
@@ -544,44 +576,60 @@ class _PaymentsTabState extends State<PaymentsTab> {
         };
 
         try {
-          // Check for duplicates
-          var existingPayments =
-              await FirebaseFirestore.instance.collection('payments').get();
-          bool isDuplicate = existingPayments.docs
-              .any((doc) => doc['payment_id'] == paymentData['payment_id']);
+          try {
+            // Check for duplicates
+            var existingPayments =
+                await FirebaseFirestore.instance.collection('payments').get();
+            bool isDuplicate = existingPayments.docs
+                .any((doc) => doc['payment_id'] == paymentData['payment_id']);
 
-          if (isDuplicate) {
-            // Show duplicate notification
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text('Duplicate Found'),
-                  content:
-                      Text('Duplicate payment ID: ${paymentData['payment_id']}'),
-                  actions: <Widget>[
-                    TextButton(
-                      child: Text('OK'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
-          } else {
-            try {
-              await FirebaseFirestore.instance
-                  .collection('payments')
-                  .add(paymentData);
-              payments.add(paymentData);
-            } catch (e) {
+            if (isDuplicate) {
+              // Show duplicate notification
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Duplicate Found'),
+                    content:
+                        Text('Duplicate payment ID: ${paymentData['payment_id']}'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('OK'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            } else {
+              try {
+                await FirebaseFirestore.instance
+                    .collection('payments')
+                    .add(paymentData);
+                payments.add(paymentData);
+              } catch (e) {
+                if (e is FirebaseException) {
+                  print('Firebase error: ${e.message}');
+                } else {
+                  print('Error: $e');
+                }
+              }
+            }
+          } catch (e) {
+            if (e is FirebaseException) {
+              print('Firebase error: ${e.message}');
+            } else {
               print('Error: $e');
             }
           }
         } catch (e) {
-          print('Error: $e');
+          if (e is FirebaseException) {
+            print('Firebase error: ${e.message}');
+          } else {
+            print('Error: $e');
+          }
         }
       }
       // Show success message after upload

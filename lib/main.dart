@@ -1,12 +1,26 @@
 library firebase_interop;
 
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'customer_management_page.dart';
 import 'services/database_setup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: 'YOUR_API_KEY',
+        appId: 'YOUR_APP_ID',
+        messagingSenderId: 'YOUR_SENDER_ID',
+        projectId: 'YOUR_PROJECT_ID',
+      ),
+    );
+  } else {
+    await Firebase.initializeApp();
+  }
   await DatabaseInitializer.initializeCollections();
+  // registerExtension(...); // Comment this in release
   runApp(MyApp());
 }
 
